@@ -1,5 +1,5 @@
 # singlelove.github.io
-useage：
+#usage
 
 npm install hexo
 
