@@ -18,4 +18,3 @@
 1. hexo clean
 2. hexo g
 3. hexo s
-4. hexo d
