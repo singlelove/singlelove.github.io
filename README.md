@@ -15,6 +15,5 @@
 
 #develop
 
-1. hexo clean
-2. hexo g
-3. hexo s
+1. hexo g
+2. hexo s
