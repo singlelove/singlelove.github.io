@@ -1,14 +1,21 @@
 # singlelove.github.io
 #usage
 
-npm install hexo
+1. npm install hexo
 
-npm install
+2. npm install
 
-npm install hexo-deployer-git
+3. npm install hexo-deployer-git
 
 #update
 
-use 'git add .、git commit -m "..."、git push origin hexo' to commit to hexo branch.
+1. use 'git add .、git commit -m "..."、git push origin hexo' to commit to hexo branch.
 
-use 'hexo g -d' to publish to master branch.
+2. use 'hexo g -d' to publish to master branch.
+
+#develop
+
+1. hexo clean
+2. hexo g
+3. hexo s
+4. hexo d
