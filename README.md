@@ -7,4 +7,8 @@ npm install
 
 npm install hexo-deployer-git
 
-then use 'hexo g -d' to publish.
+#update
+
+use 'git add .、git commit -m "..."、git push origin hexo' to commit to hexo branch.
+
+use 'hexo g -d' to publish to master branch.
