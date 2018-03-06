@@ -2,7 +2,7 @@
 title: Hexo搭建记录
 date: 2018-03-06 10:02:53
 tags: 学习
-categlory: 框架
+categories: 框架
 ---
 # 前言
 本文是我在Hexo搭建、主题配置及插件安装过程中的记录，旨在帮助那些同样想学习使用Hexo搭建自己个人站点的朋友。不过由于本文是在我搭建Hexo一个多月之后才开始写作的，因此难免存在一些纰漏之处，欢迎指正。
@@ -17,7 +17,7 @@ categlory: 框架
 - 安装：一路next，安装完成之后，打开git bash，输入node -v显示版本号表示安装成功
 
 # 部署到github
-- 没账号的创建账号，然后创建一个repo，名称为**yourname.github.io**，其中yourname(以及之后出现的yourname)是你的github名称。
+- 没账号的创建账号，然后创建一个repo，名称为`yourname.github.io`，其中yourname(以及之后出现的yourname)是你的github名称。
 {% qnimg Hexo搭建记录/createRepo.png %}
 {% qnimg Hexo搭建记录/repoConfig.png %}
 - 添加SSH，参考github[官网文档](https://help.github.com/articles/connecting-to-github-with-ssh/)
