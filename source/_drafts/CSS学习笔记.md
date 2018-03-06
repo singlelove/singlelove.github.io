@@ -31,3 +31,8 @@ rem：相对于html元素的大小，为了便于计算，可设置html{font-siz
 # 外边距合并
 两个或多个毗邻（父子元素或兄弟元素）的普通流中的块元素垂直方向上的 margin 会发生叠加。
 > 其中毗邻是指没有被非空内容、padding、border 或 clear 分隔开。
+
+# animation
+- 对元素A使用rotate3d(x,y,z,deg)之后，需要在其父元素B添加`-webkit-perspective`(暂时没有浏览器直接支持perspective)属性(透视距离)才能使A元素看起来具有3D效果。
+- 问题1中要使A元素的子元素C也具有3D透视效果，则需要在A元素上也添加`-webkit-perspective`属性。
+- 对一帧动画执行旋转、位移复合操作时，采用如下写法：`transform: rotateX(45deg) translateX(10px)`
