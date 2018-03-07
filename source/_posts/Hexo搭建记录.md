@@ -18,8 +18,8 @@ categories: 框架
 
 # 部署到github
 - 没账号的创建账号，然后创建一个repo，名称为`yourname.github.io`，其中yourname(以及之后出现的yourname)是你的github名称。
-{% qnimg Hexo搭建记录/createRepo.png %}
-{% qnimg Hexo搭建记录/repoConfig.png %}
+{% qnimg article/Hexo搭建记录/createRepo.png %}
+{% qnimg article/Hexo搭建记录/repoConfig.png %}
 - 添加SSH，参考github[官网文档](https://help.github.com/articles/connecting-to-github-with-ssh/)
 - 搭建开发环境
   1、创建hexo分支
@@ -29,7 +29,7 @@ categories: 框架
 > npm install hexo-cli -g
 hexo init
 npm install
-npm install hexo-deployer-git --save
+npm install hexo-deployer-git \--save
 
   5、修改_config.yml中的deploy参数，分支为master
   6、执行以下命令将改动提交到github
@@ -45,7 +45,7 @@ hexo s
 > hexo g
 hexo d
 
-  至此，yourname.github.io仓库上有两个分支，hexo分支用来存放网站原始文件，master分支用来存放生成的静态文件，这样即使换了电脑，也可以通过上述3、4两步快速搭建本地开发环境(此时，不需要hexo init)。
+  至此，yourname.github.io仓库上有两个分支，hexo分支用来存放网站原始文件，master分支用来存放生成的静态文件，这样即使换了电脑，也可以通过上述3、4两步快速搭建本地开发环境(此时第4步中，只需要执行npm install即可)。
   
 # 主题安装
 主流是NexT主题，安装没什么难度，可以参考[官方文档](http://theme-next.iissnan.com/third-party-services.html#livere)
