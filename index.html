@@ -416,15 +416,15 @@
             <ul>
 <li>引用图片模板时，一定要用ng-src替代src，不然src会直接使用&#123;&#123;&#125;&#125;作为图片地址，并不会去解析。</li>
 <li>内容的更新由控制器负责。不同区域有不同模板的话，一种方式是使用ng-show/ng-hide，即有内容了才显示出来，第二种方式是使用ng-include，加载不同模板，第三种方式是使用ng-switch，类似tab标签效果</li>
-<li>ngrepeat默认不允许有重复的数据，可以通过加track by $index解决<img src="/static/images/article/angular学习笔记/ngrepeat.png"></li>
-<li>ng-repeat下每一个子代都有一个scope，因此要用$root（验证成功，模板里用$root，控制器里用$rootscope）或者$parent（未验证成功）定义才能在外层访问。<img src="/static/images/article/angular学习笔记/ngrepeatScope.png"></li>
-<li>Angular异步编程用”$q”，defer对象的声明及promise对象的返回放在异步操作外层<img src="/static/images/article/angular学习笔记/defer.png"></li>
+<li>ngrepeat默认不允许有重复的数据，可以通过加track by $index解决<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeat.png"></li>
+<li>ng-repeat下每一个子代都有一个scope，因此要用$root（验证成功，模板里用$root，控制器里用$rootscope）或者$parent（未验证成功）定义才能在外层访问。<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeatScope.png"></li>
+<li>Angular异步编程用”$q”，defer对象的声明及promise对象的返回放在异步操作外层<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/defer.png"></li>
 <li>双向绑定“失效”的原因<ul>
 <li>$scope作用域的不同造成的</li>
 <li>绑定的变量在第三方插件(或者监听器中发生改变)，则需要调用$scope.$apply()手动更新视图。</li>
 </ul>
 </li>
-<li>关于如何在angular完全加载，即各种ng指令编译链接完成，生成了动态的dom组件之后执行某些操作：自定义directive，并在link里添加$timeout，把要执行的操作放到$timeout函数里，delay可设置为0。<a href="https://github.com/angular/angular.js/issues/734" target="_blank" rel="noopener">未找到满意方法</a><img src="/static/images/article/angular学习笔记/afterRender.png"></li>
+<li>关于如何在angular完全加载，即各种ng指令编译链接完成，生成了动态的dom组件之后执行某些操作：自定义directive，并在link里添加$timeout，把要执行的操作放到$timeout函数里，delay可设置为0。<a href="https://github.com/angular/angular.js/issues/734" target="_blank" rel="noopener">未找到满意方法</a><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/afterRender.png"></li>
 <li>尽量不要直接用&#123;&#123;&#125;&#125;的方式绑定文本，而用ng-bind，否则在加载缓慢时，浏览器会直接显示&#123;&#123;&#125;&#125;，用户体验不好</li>
 <li>Angular内置过滤器filter<ul>
 <li>currency: currency允许我们设置自己的货币符号，默认情况下会采用客户端所处区域的货币符号。可以这样使用：&#123;&#123; 3600 | currency: “$￥”&#125;&#125;返回结果为$￥123.00</li>
@@ -439,10 +439,10 @@
 <li>scope会为指令创建独立的scope，左边为属性或函数名，右边为绑定属性或函数，可用修饰符罗列如下：<ul>
 <li>‘=’：绑定标签中的属性所指定的$scope上的属性；</li>
 <li>‘&amp;’：绑定标签中的属性所指定的$scope上的属性，该属性必须为函数回调；</li>
-<li>‘@’：绑定标签上的属性所指定的html字面量/直接值；<img src="/static/images/article/angular学习笔记/directive-1.png">
-‘=’表示指令自身的独立scope中$scope.customer对应的标签属性值为info<img src="/static/images/article/angular学习笔记/directive-2.png">
-<img src="/static/images/article/angular学习笔记/directive-3.png">
-‘&amp;’表示将标签属性中的onClose函数绑定当指令自身独立scope中的$scope.close属性上  <img src="/static/images/article/angular学习笔记/directive-4.png"></li>
+<li>‘@’：绑定标签上的属性所指定的html字面量/直接值；<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-1.png">
+‘=’表示指令自身的独立scope中$scope.customer对应的标签属性值为info<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-2.png">
+<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-3.png">
+‘&amp;’表示将标签属性中的onClose函数绑定当指令自身独立scope中的$scope.close属性上  <img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-4.png"></li>
 </ul>
 </li>
 <li>Require表示指令依赖的controller，可用修饰符如下<ul>
@@ -453,8 +453,8 @@
 </li>
 </ul>
 </li>
-<li>动态生成的directive，若其scope不为空，则生成的directive的scope的父scope是用于生成directive的directive的scope<img src="/static/images/article/angular学习笔记/svnProjectItem.png">
-<img src="/static/images/article/angular学习笔记/svnAddItem.png">
+<li>动态生成的directive，若其scope不为空，则生成的directive的scope的父scope是用于生成directive的directive的scope<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnProjectItem.png">
+<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnAddItem.png">
 如图，普通svnProjectItem的父scope是A，svnAddItem的scope为B，通过svnAddItem生成的svnProjectItem的父scope是svnAddItem的scope即B，因此需要在svnAddItem中再指向A中的方法，才能使svnProjectItem指令中的delete方法正确调用到A中的对应方法</li>
 <li>如果要将directive A中的方法暴露在其他directive B时，将方法写在A指令的controller中，在B指令中通过require: ‘A’的形式引入A的controller，从而在B中完成调用。</li>
 <li>Fis3构建时，angular的依赖注入一定要采用标准的写法，否则会出现压缩后的代码无法正确注入依赖的情况</li>
@@ -621,8 +621,8 @@
 <li>安装：一路next，安装完成之后，打开git bash，输入node -v显示版本号表示安装成功</li>
 </ul>
 <h1 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h1><ul>
-<li>没账号的创建账号，然后创建一个repo，名称为<code>yourname.github.io</code>，其中yourname(以及之后出现的yourname)是你的github名称。<img src="/static/images/article/Hexo搭建记录/createRepo.png">
-<img src="/static/images/article/Hexo搭建记录/repoConfig.png"></li>
+<li>没账号的创建账号，然后创建一个repo，名称为<code>yourname.github.io</code>，其中yourname(以及之后出现的yourname)是你的github名称。<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/Hexo搭建记录/createRepo.png">
+<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/Hexo搭建记录/repoConfig.png"></li>
 <li>添加SSH，参考github<a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">官网文档</a></li>
 <li><p>搭建开发环境<br>1、创建hexo分支<br>2、设置hexo为默认分支<br>3、在git bash中使用git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourname/yourname.github.io.git拷贝仓库到本地<br>4、在本地yourname.github.io文件夹下通过git bash执行以下命令安装hexo及相关依赖</p>
 <blockquote>
@@ -837,14 +837,14 @@
 <h1 id="心理学"><a href="#心理学" class="headerlink" title="心理学"></a>心理学</h1><h2 id="欺骗的艺术"><a href="#欺骗的艺术" class="headerlink" title="欺骗的艺术"></a><a href="https://book.douban.com/subject/25962840/" target="_blank" rel="noopener">欺骗的艺术</a></h2><p>豆瓣评分：7.8<br>阅读时间：2017-09-11<br>个人短评：最大的安全漏洞永远是人。《欺骗的艺术》(国内亦有译成《反欺骗的艺术》)主要讲述了信息安全里社会工程学上的欺骗，即使再严密的防火墙，也挡不住社会工程师对人的攻击。虽然书里分了很多章节，举了各种示例展示各种不同的社会工程学攻击，但感觉有很多相似的地方，其实总结下来基本逃不开获取无害的信息–&gt;再以此伪装成内部人员骗取目标关键信息(通常可通过同情、感恩和胁迫等方式达成)的过程，所以感觉干货其实不多。再加上不得不一再吐槽的翻译水平，看到60%决定弃了。(感觉专业类书籍的翻译跟文学类书籍的翻译差的不是一星半点，连基本的语句通顺都常常做不到)</p>
 <h2 id="身份的焦虑"><a href="#身份的焦虑" class="headerlink" title="身份的焦虑"></a><a href="https://book.douban.com/subject/2033081/" target="_blank" rel="noopener">身份的焦虑</a></h2><p>豆瓣评分：8.2<br>阅读时间：2017-09-12<br>个人短评：初看的时候很喜欢，但看完之后又觉得裨益不大。身份的焦虑主要是由于在意他人对自己的评价造成的，这是我一直想摆脱，但是很难做到的。阿兰的这本书揭露了身份焦虑的普遍性，分析了成因，也提供了解决思路，但缺少可操作性，毕竟就像他在序言里说的：治疗身份焦虑没有灵丹妙药，只有通过了解、讨论来减少它带来的痛苦和内疚。不过感觉本书的旁征博引有点过于频繁，部分举例显得冗余。“他人对我们的关注之所以如此重要，主要原因便在于人类对自身价值的判断有一种与生俱来的不确定性”。《身份的焦虑》引导我好好思考了这个问题，还是很有启示作用的，不过知易行难，想改变这个状况，路漫漫其修远啊。PS: 这本书是最近看的非文学类作品里翻译最好的！不止语句通顺，也很符合中文语境！</p>
 <h2 id="心理学与生活"><a href="#心理学与生活" class="headerlink" title="心理学与生活"></a><a href="https://book.douban.com/subject/1032501/" target="_blank" rel="noopener">心理学与生活</a></h2><p>豆瓣评分：8.8<br>阅读时间：2017-11-04<br>个人短评：不愧是教科书，全是各种概念解释，看了7章看不下去了，感觉解释太过简略，缺少事例，没有心理学基础的读者比较难理解掌握。</p>
-<h2 id="男人来自火星女人来自金星"><a href="#男人来自火星女人来自金星" class="headerlink" title="男人来自火星女人来自金星"></a><a href="https://book.douban.com/subject/5356342/" target="_blank" rel="noopener">男人来自火星女人来自金星</a></h2><p>豆瓣评分：7.7<br>阅读时间：2018-01-30<br><img src="/static/images/思维导图/男人来自火星女人来自金星.jpg"><br>个人短评：书是去年就读完了，就勉强当成是今年的第一本吧。尽管有些概念以前就知道，而且作者很啰嗦，几个概念翻来覆去地在讲，但确实是一本值得阅读的书。男女思维方式上的差异，加大了换位思考的难度，需要经常提醒自己回忆这本书的理论，才能更好的明白对方的诉求，从而更和谐地相处。</p>
+<h2 id="男人来自火星女人来自金星"><a href="#男人来自火星女人来自金星" class="headerlink" title="男人来自火星女人来自金星"></a><a href="https://book.douban.com/subject/5356342/" target="_blank" rel="noopener">男人来自火星女人来自金星</a></h2><p>豆瓣评分：7.7<br>阅读时间：2018-01-30<br><img src="http://p5763d6fj.bkt.clouddn.com/static/images/思维导图/男人来自火星女人来自金星.jpg"><br>个人短评：书是去年就读完了，就勉强当成是今年的第一本吧。尽管有些概念以前就知道，而且作者很啰嗦，几个概念翻来覆去地在讲，但确实是一本值得阅读的书。男女思维方式上的差异，加大了换位思考的难度，需要经常提醒自己回忆这本书的理论，才能更好的明白对方的诉求，从而更和谐地相处。</p>
 <hr>
 <h1 id="思维"><a href="#思维" class="headerlink" title="思维"></a>思维</h1><h2 id="你的灯亮着吗"><a href="#你的灯亮着吗" class="headerlink" title="你的灯亮着吗"></a><a href="https://book.douban.com/subject/25772550/" target="_blank" rel="noopener">你的灯亮着吗</a></h2><p>豆瓣评分：7.5<br>阅读时间：2017-07-24<br>个人短评： 真是个悲伤而又暖心的故事。究竟什么样的状态才算是死亡？所有的纠结源于这个问题。看完故事之后，从《沉睡的人鱼之家》中，我除了感动之外，更多的是另外的感受–不要把你的价值观强加给别人。熏子正是因为一直想向别人证明自己的女儿还活着，才有了一系列疯狂的举动，最后甚至差点“杀死”自己的女儿。有些问题也许本来就没有所谓的正确答案，就如熏子清醒后所说的那样“我觉得这个世界的意见不需要统一，有时候甚至不要统一反而比较好。”</p>
 <h2 id="学会提问——批判性思维指南"><a href="#学会提问——批判性思维指南" class="headerlink" title="学会提问——批判性思维指南"></a><a href="https://book.douban.com/subject/1504957/" target="_blank" rel="noopener">学会提问——批判性思维指南</a></h2><p>豆瓣评分：8.6<br>阅读时间：2017-09-07<br>个人短评：非常值得反复研读的一本书，不过也是一本很难啃的书。由于教育体制的问题，绝大部分人对知识都是“海绵式”的接收方式，缺乏独立思考，这本算是我接触的第一本比较系统、完整的讲如何培养独立思考能力，培养“淘金式”思维的书。前面几章看着还有余力，做练习的时候思路也比较清晰，但是越到后面就越难理解了，一方面是内容的深入(甚至到了抠字眼的程度)，另一方面翻译真的太糟，严重影响理解。发现英文阅读能力真的是太重要了，这已经不是第一次遇到翻译糟糕的书了。</p>
 <hr>
 <h1 id="科学"><a href="#科学" class="headerlink" title="科学"></a>科学</h1><h2 id="七堂极简物理课"><a href="#七堂极简物理课" class="headerlink" title="七堂极简物理课"></a><a href="https://book.douban.com/subject/26772731/" target="_blank" rel="noopener">七堂极简物理课</a></h2><p>豆瓣评分：8.3<br>阅读时间：2017-02-09<br>个人短评：真的是极简，很多东西点到为止，我一工科生看了都一头雾水，很多概念以前就知道，也有些观点有种打开新世界大门的感觉：比如时间是不会流动的，时间的流逝只是人的主观感受；又比如热的东西跟冷的东西接触，有可能热的那个会变得更热，只是概率微乎其微。然而表示看完之后，并没有勾起我对物理的兴趣。</p>
 <h2 id="智能时代"><a href="#智能时代" class="headerlink" title="智能时代"></a><a href="https://book.douban.com/subject/26838557/" target="_blank" rel="noopener">智能时代</a></h2><p>豆瓣评分：8.5<br>阅读时间：2017-02-15<br>个人短评：这是最好的时代，也是最坏的时代。大数据和人工智能带来的好处不言而喻，负面影响也必然会比前几次技术革命来的大。机器替代人工造成的劳动力过剩只能靠时间去消化，被替代的人很难有机会加入新的行业，只能被淘汰。尽管如此，还是要拥抱技术，努力成为那2%的收益者。吴军的这本《智能时代》深入浅出，逻辑清晰，相信即使不是工科背景，读起来也能很顺畅，值得一看。</p>
-<h2 id="未来简史"><a href="#未来简史" class="headerlink" title="未来简史"></a><a href="https://book.douban.com/subject/26943161/" target="_blank" rel="noopener">未来简史</a></h2><p>豆瓣评分：8.5<br>阅读时间：2018-01-30<br><img src="/static/images/思维导图/未来简史.jpg"><br>个人短评：说是未来简史，但其实前面几章主要还是在回顾人类征服世界的历史，最后才是对未来的一种可能的解读。观点并不算新，感觉主要讨论的还是机器或者说算法取代人类之后，人类的归处。只不过作者的分析头头是道，还是挺唬人的。历史的车轮滚滚向前，反正咱啥也改变不了，还是老老实实写代码吧。</p>
+<h2 id="未来简史"><a href="#未来简史" class="headerlink" title="未来简史"></a><a href="https://book.douban.com/subject/26943161/" target="_blank" rel="noopener">未来简史</a></h2><p>豆瓣评分：8.5<br>阅读时间：2018-01-30<br><img src="http://p5763d6fj.bkt.clouddn.com/static/images/思维导图/未来简史.jpg"><br>个人短评：说是未来简史，但其实前面几章主要还是在回顾人类征服世界的历史，最后才是对未来的一种可能的解读。观点并不算新，感觉主要讨论的还是机器或者说算法取代人类之后，人类的归处。只不过作者的分析头头是道，还是挺唬人的。历史的车轮滚滚向前，反正咱啥也改变不了，还是老老实实写代码吧。</p>
 <hr>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="怦然心动的人生整理魔法"><a href="#怦然心动的人生整理魔法" class="headerlink" title="怦然心动的人生整理魔法"></a><a href="https://book.douban.com/subject/10747883/" target="_blank" rel="noopener">怦然心动的人生整理魔法</a></h2><p>豆瓣评分：8.0<br>阅读时间：2017-08-05<br>个人短评：真是什么都能出书啊。作者简直是个中二，整理的时候要抱着爱意是什么鬼。总之，200页的书只讲了一个内容，收纳整理的第一步是丢东西！在一番断舍离扔了几大箱东西之后，确实舒服多了。</p>
 
