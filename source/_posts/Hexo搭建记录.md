@@ -69,3 +69,5 @@ hexo d
 第一种方式在图片不多的情况下可以使用，比较方便，配置参考[官方文档](https://hexo.io/zh-cn/docs/asset-folders.html)
 第二种方式推荐选用[七牛](https://www.qiniu.com/)作为图床，相关配置可参考文章["使用七牛为Hexo存储图片等资源"](https://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo/)
 > 使用hexo-qiniu-sync插件时，请谨慎执行hexo clean命令，因为会清空资源目录。
+
+> offline离线、在线模式切换时，需要先hexo clean才能生效
