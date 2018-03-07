@@ -98,12 +98,12 @@ feed:
 ##image.extend  这是个特殊参数，用于生成缩略图或加水印等操作。具体请参考http://developer.qiniu.com/docs/v6/api/reference/fop/image/ 
 ##              可使用基本图片处理、高级图片处理、图片水印处理这3个接口。例如 ?imageView2/2/w/500 即生成宽度最多500px的缩略图
 qiniu:
-  offline: true
+  offline: false
   sync: true
   bucket: hexo
   secret_file: ./secret/qiniu.json
   dirPrefix: static
-  urlPrefix: http://bucket_name.qiniudn.com/static
+  urlPrefix: http://p5763d6fj.bkt.clouddn.com/static
   up_host: http://upload.qiniu.com
   local_dir: static
   update_exist: true
