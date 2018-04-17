@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="学习," />
+  <meta name="keywords" content="问题记录," />
 
 
 
@@ -81,29 +81,20 @@
 
 
 
-<meta name="description" content="引用图片模板时，一定要用ng-src替代src，不然src会直接使用&amp;#123;&amp;#123;&amp;#125;&amp;#125;作为图片地址，并不会去解析。 内容的更新由控制器负责。不同区域有不同模板的话，一种方式是使用ng-show/ng-hide，即有内容了才显示出来，第二种方式是使用ng-include，加载不同模板，第三种方式是使用ng-switch，类似tab标签效果 ngrepeat默认不允许有">
-<meta name="keywords" content="学习">
+<meta name="description" content="前言使用jquery chosen插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。 scroll事件覆盖首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。 插件highlight事件断点调试仔细观察bug后发现滚动时行为正常，但是当">
+<meta name="keywords" content="问题记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="angular学习笔记">
-<meta property="og:url" content="http://yoursite.com/2018/03/06/angular学习笔记/index.html">
+<meta property="og:title" content="工作采坑记录：jquery1.12版本top计算的坑">
+<meta property="og:url" content="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/index.html">
 <meta property="og:site_name" content="SOLACE ZONE">
-<meta property="og:description" content="引用图片模板时，一定要用ng-src替代src，不然src会直接使用&amp;#123;&amp;#123;&amp;#125;&amp;#125;作为图片地址，并不会去解析。 内容的更新由控制器负责。不同区域有不同模板的话，一种方式是使用ng-show/ng-hide，即有内容了才显示出来，第二种方式是使用ng-include，加载不同模板，第三种方式是使用ng-switch，类似tab标签效果 ngrepeat默认不允许有">
+<meta property="og:description" content="前言使用jquery chosen插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。 scroll事件覆盖首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。 插件highlight事件断点调试仔细观察bug后发现滚动时行为正常，但是当">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeat.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeatScope.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/defer.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/afterRender.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-1.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-2.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-3.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-4.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnProjectItem.png">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnAddItem.png">
-<meta property="og:updated_time" content="2018-03-07T05:31:16.642Z">
+<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png">
+<meta property="og:updated_time" content="2018-04-17T09:16:14.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="angular学习笔记">
-<meta name="twitter:description" content="引用图片模板时，一定要用ng-src替代src，不然src会直接使用&amp;#123;&amp;#123;&amp;#125;&amp;#125;作为图片地址，并不会去解析。 内容的更新由控制器负责。不同区域有不同模板的话，一种方式是使用ng-show/ng-hide，即有内容了才显示出来，第二种方式是使用ng-include，加载不同模板，第三种方式是使用ng-switch，类似tab标签效果 ngrepeat默认不允许有">
-<meta name="twitter:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeat.png">
+<meta name="twitter:title" content="工作采坑记录：jquery1.12版本top计算的坑">
+<meta name="twitter:description" content="前言使用jquery chosen插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。 scroll事件覆盖首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。 插件highlight事件断点调试仔细观察bug后发现滚动时行为正常，但是当">
+<meta name="twitter:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png">
 
 
 
@@ -133,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/06/angular学习笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/"/>
 
 
 
 
 
-  <title>angular学习笔记 | SOLACE ZONE</title>
+  <title>工作采坑记录：jquery1.12版本top计算的坑 | SOLACE ZONE</title>
   
 
 
@@ -324,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/angular学习笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Beijin">
@@ -341,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">angular学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">工作采坑记录：jquery1.12版本top计算的坑</h1>
         
 
         <div class="post-meta">
@@ -353,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T16:58:58+08:00">
-                2018-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-17T16:32:03+08:00">
+                2018-04-17
               </time>
             
 
@@ -376,8 +367,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/angular/" itemprop="url" rel="index">
-                    <span itemprop="name">angular</span>
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
                   </a>
                 </span>
 
@@ -393,7 +384,7 @@
 
           
           
-             <span id="/2018/03/06/angular学习笔记/" class="leancloud_visitors" data-flag-title="angular学习笔记">
+             <span id="/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" class="leancloud_visitors" data-flag-title="工作采坑记录：jquery1.12版本top计算的坑">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -424,51 +415,17 @@
       
 
       
-        <ul>
-<li>引用图片模板时，一定要用ng-src替代src，不然src会直接使用&#123;&#123;&#125;&#125;作为图片地址，并不会去解析。</li>
-<li>内容的更新由控制器负责。不同区域有不同模板的话，一种方式是使用ng-show/ng-hide，即有内容了才显示出来，第二种方式是使用ng-include，加载不同模板，第三种方式是使用ng-switch，类似tab标签效果</li>
-<li>ngrepeat默认不允许有重复的数据，可以通过加track by $index解决<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeat.png"></li>
-<li>ng-repeat下每一个子代都有一个scope，因此要用$root（验证成功，模板里用$root，控制器里用$rootscope）或者$parent（未验证成功）定义才能在外层访问。<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeatScope.png"></li>
-<li>Angular异步编程用”$q”，defer对象的声明及promise对象的返回放在异步操作外层<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/defer.png"></li>
-<li>双向绑定“失效”的原因<ul>
-<li>$scope作用域的不同造成的</li>
-<li>绑定的变量在第三方插件(或者监听器中发生改变)，则需要调用$scope.$apply()手动更新视图。</li>
-</ul>
-</li>
-<li>关于如何在angular完全加载，即各种ng指令编译链接完成，生成了动态的dom组件之后执行某些操作：自定义directive，并在link里添加$timeout，把要执行的操作放到$timeout函数里，delay可设置为0。<a href="https://github.com/angular/angular.js/issues/734" target="_blank" rel="noopener">未找到满意方法</a><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/afterRender.png"></li>
-<li>尽量不要直接用&#123;&#123;&#125;&#125;的方式绑定文本，而用ng-bind，否则在加载缓慢时，浏览器会直接显示&#123;&#123;&#125;&#125;，用户体验不好</li>
-<li>Angular内置过滤器filter<ul>
-<li>currency: currency允许我们设置自己的货币符号，默认情况下会采用客户端所处区域的货币符号。可以这样使用：&#123;&#123; 3600 | currency: “$￥”&#125;&#125;返回结果为$￥123.00</li>
-<li>number: number过滤器将数字格式化成文本，它的参数是可选的，用来控制小数点后的截取位数如果传入的是一个非数字字符，会返回空字符串  可以这样使用：&#123;&#123; 3600 | number:2&#125;&#125;返回结果为：3,600.00</li>
-<li>lowercase: lowercase将字符串转换为小写可以这样使用：&#123;&#123; “HEllo” | lowercase&#125;&#125;返回结果为：hello</li>
-<li>uppercase: uppercase将字符串转换为大写可以这样使用：&#123;&#123; “HEllo” | uppercase&#125;&#125;返回结果为：HELLO</li>
-<li>json: json过滤器可以将一个JSON或者JavaScript对象转换成字符串。这个过滤器对调试相当有用可以这样使用：&#123;&#123; &#123;”name”:”dreamapple”,”language”:”AngularJS”&#125; | json&#125;&#125;返回结果为：&#123; “name”: “dreamapple”, “language”: “AngularJS” &#125;</li>
-<li>date: date过滤器将日期过滤成你想要的格式，这个实在是很好的过滤器。这个过滤器用法很多我这里列举几种常用的&#123;&#123; today | date: “yyyy - mm - dd”&#125;&#125;结果为：2015 - 15 - 13&#123;&#123; today | date: “yyyy - mm - dd HH:mm::ss”&#125;&#125;    结果为：2015 - 18 - 13 20:18::38</li>
-</ul>
-</li>
-<li>directive中的特殊符号<ul>
-<li>scope会为指令创建独立的scope，左边为属性或函数名，右边为绑定属性或函数，可用修饰符罗列如下：<ul>
-<li>‘=’：绑定标签中的属性所指定的$scope上的属性；</li>
-<li>‘&amp;’：绑定标签中的属性所指定的$scope上的属性，该属性必须为函数回调；</li>
-<li>‘@’：绑定标签上的属性所指定的html字面量/直接值；<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-1.png">
-‘=’表示指令自身的独立scope中$scope.customer对应的标签属性值为info<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-2.png">
-<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-3.png">
-‘&amp;’表示将标签属性中的onClose函数绑定当指令自身独立scope中的$scope.close属性上  <img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-4.png"></li>
-</ul>
-</li>
-<li>Require表示指令依赖的controller，可用修饰符如下<ul>
-<li>‘^’前缀会使$compile在其父元素上搜索，找不到会抛出错误；</li>
-<li>‘?’前缀在当前指令寻找，找不到会将null作为第四个参数传入link；</li>
-<li>无前缀则只在当前指令寻找，找不到会抛出错误；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>动态生成的directive，若其scope不为空，则生成的directive的scope的父scope是用于生成directive的directive的scope<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnProjectItem.png">
-<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnAddItem.png">
-如图，普通svnProjectItem的父scope是A，svnAddItem的scope为B，通过svnAddItem生成的svnProjectItem的父scope是svnAddItem的scope即B，因此需要在svnAddItem中再指向A中的方法，才能使svnProjectItem指令中的delete方法正确调用到A中的对应方法</li>
-<li>如果要将directive A中的方法暴露在其他directive B时，将方法写在A指令的controller中，在B指令中通过require: ‘A’的形式引入A的controller，从而在B中完成调用。</li>
-<li>Fis3构建时，angular的依赖注入一定要采用标准的写法，否则会出现压缩后的代码无法正确注入依赖的情况</li>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用<a href="https://github.com/harvesthq/chosen" target="_blank" rel="noopener">jquery chosen</a>插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。</p>
+<h1 id="scroll事件覆盖"><a href="#scroll事件覆盖" class="headerlink" title="scroll事件覆盖"></a>scroll事件覆盖</h1><p>首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。</p>
+<h1 id="插件highlight事件断点调试"><a href="#插件highlight事件断点调试" class="headerlink" title="插件highlight事件断点调试"></a>插件highlight事件断点调试</h1><p>仔细观察bug后发现滚动时行为正常，但是当鼠标移到下拉菜单上，高亮选中项时，就会发生异常跳转，于是怀疑是插件highlight操作时出现异常。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Chosen.prototype.result_do_highlight = <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> high_bottom, high_top, maxHeight, visible_bottom, visible_top;</span><br><span class="line">  <span class="keyword">if</span> (el.length) &#123;</span><br><span class="line">    <span class="keyword">this</span>.result_clear_highlight();</span><br><span class="line">    <span class="keyword">this</span>.result_highlight = el;</span><br><span class="line">    <span class="keyword">this</span>.result_highlight.addClass(<span class="string">"highlighted"</span>);</span><br><span class="line">    maxHeight = <span class="built_in">parseInt</span>(<span class="keyword">this</span>.search_results.css(<span class="string">"maxHeight"</span>), <span class="number">10</span>);</span><br><span class="line">    visible_top = <span class="keyword">this</span>.search_results.scrollTop();</span><br><span class="line">    visible_bottom = maxHeight + visible_top;</span><br><span class="line">    high_top = <span class="keyword">this</span>.result_highlight.position().top + <span class="keyword">this</span>.search_results.scrollTop();</span><br><span class="line">    high_bottom = high_top + <span class="keyword">this</span>.result_highlight.outerHeight();</span><br><span class="line">    <span class="keyword">if</span> (high_bottom &gt;= visible_bottom) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.search_results.scrollTop((high_bottom - maxHeight) &gt; <span class="number">0</span> ? high_bottom - maxHeight : <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (high_top &lt; visible_top) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.search_results.scrollTop(high_top);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码是插件执行highlight的部分，对比官网例子之后发现当下拉菜单往下滚动时，本地<strong><em>this.result_highlight.position().top</em></strong>的值异常大，官网例子的对应参数取值在[0, 240]之间，也就是下拉菜单的可视区域的最大高度，于是确定是<strong><em>this.result_highlight.position().top</em></strong>的计算有问题。</p>
+<h1 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h1><p>为什么本地<strong><em>this.result_highlight.position().top</em></strong>的值会出错呢，<a href="https://api.jquery.com/position/" target="_blank" rel="noopener">jquery</a>官网说明比较简略，position计算的是当前元素与父元素的相对距离。我首先想到的是会不会是本地的css样式影响了position的计算，于是把插件移到了最顶端，注释掉了几乎所有css，只保留了插件的样式，但是bug依然存在。</p>
+<h1 id="issues里找答案"><a href="#issues里找答案" class="headerlink" title="issues里找答案"></a>issues里找答案</h1><p>万般debug无果，我又把目光投向了插件在github上的issues，看是否有其他人遇到同样的问题，果然找到了一个<a href="https://github.com/harvesthq/chosen/issues/2506" target="_blank" rel="noopener">issue</a>，也找到了解决方案<br><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png"><br>试了一下，果然解决了。那为什么会产生这个问题呢，继续看issues下的评论，发现了这是jquery1.12中的一个<a href="https://github.com/jquery/jquery/commit/49833f7795d665ff1d543c4f71f29fca95b567e9" target="_blank" rel="noopener">bug</a>。在jquery1.12和2.2中top的计算出现了bug，把scrollTop的值也算进去了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总结了下，在这个bug的定位解决中还是走了不少弯路的。如果一开始就注意到官网中要求的插件依赖jQuery support: 1.7+，就能更早的定位到问题。总结了下插件bug的定位过程，感觉按照下面的过程去定位会比较好：</p>
+<ul>
+<li>1、看本地是否满足了插件依赖的版本要求</li>
+<li>2、看issues里是否有别人遇到了同样的问题</li>
+<li>3、最后再断点插件相关部分的代码自己找原因</li>
 </ul>
 
       
@@ -514,7 +471,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/03/06/angular学习笔记/" title="angular学习笔记">http://yoursite.com/2018/03/06/angular学习笔记/</a>
+    <a href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" title="工作采坑记录：jquery1.12版本top计算的坑">http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -529,7 +486,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/学习/" rel="tag"># 学习</a>
+            <a href="/tags/问题记录/" rel="tag"># 问题记录</a>
           
         </div>
       
@@ -557,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/Hexo搭建记录/" rel="next" title="Hexo搭建记录">
-                <i class="fa fa-chevron-left"></i> Hexo搭建记录
+              <a href="/2018/03/08/jsp+react项目webpack构建优化记录/" rel="next" title="jsp + react项目webpack构建优化记录">
+                <i class="fa fa-chevron-left"></i> jsp + react项目webpack构建优化记录
               </a>
             
           </div>
@@ -566,10 +523,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/08/jsp+react项目webpack构建优化记录/" rel="prev" title="jsp + react项目webpack构建优化记录">
-                jsp + react项目webpack构建优化记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -626,8 +579,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -714,6 +676,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scroll事件覆盖"><span class="nav-number">2.</span> <span class="nav-text">scroll事件覆盖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件highlight事件断点调试"><span class="nav-number">3.</span> <span class="nav-text">插件highlight事件断点调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css样式"><span class="nav-number">4.</span> <span class="nav-text">css样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#issues里找答案"><span class="nav-number">5.</span> <span class="nav-text">issues里找答案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
