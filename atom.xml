@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-31T02:45:36.059Z</updated>
+  <updated>2018-11-20T01:39:13.705Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跨域问题整理</title>
+    <link href="http://yoursite.com/2018/11/20/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2018/11/20/跨域问题整理/</id>
+    <published>2018-11-20T01:38:08.000Z</published>
+    <updated>2018-11-20T01:39:13.705Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;同源策略&quot;&gt;&lt;a href=&quot;#同源策略&quot; class=&quot;headerlink&quot; title=&quot;同源策略&quot;&gt;&lt;/a&gt;同源策略&lt;/h1&gt;&lt;p&gt;只有当协议，域名，端口号相同的时候才算是同一个域名，否则，均认为需要做跨域处理&lt;br&gt;常见的跨域场景&lt;br&gt;&lt;figure
+        
+      
+    
+    </summary>
+    
+      <category term="基础" scheme="http://yoursite.com/categories/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue学习笔记</title>
+    <link href="http://yoursite.com/2018/07/05/vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/07/05/vue学习笔记/</id>
+    <published>2018-07-05T09:20:04.000Z</published>
+    <updated>2018-11-20T01:40:13.971Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;computed依赖mapState的值&quot;&gt;&lt;a href=&quot;#computed依赖mapState的值&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="http://yoursite.com/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全</title>
+    <link href="http://yoursite.com/2018/06/15/web%E5%AE%89%E5%85%A8/"/>
+    <id>http://yoursite.com/2018/06/15/web安全/</id>
+    <published>2018-06-15T06:55:23.000Z</published>
+    <updated>2018-11-20T01:39:53.034Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;XSS攻击&quot;&gt;&lt;a href=&quot;#XSS攻击&quot; class=&quot;headerlink&quot; title=&quot;XSS攻击&quot;&gt;&lt;/a&gt;XSS攻击&lt;/h1&gt;&lt;h2 id=&quot;危害&quot;&gt;&lt;a href=&quot;#危害&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="安全" scheme="http://yoursite.com/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>工作采坑记录: innerHtml中遇到的换行问题</title>
