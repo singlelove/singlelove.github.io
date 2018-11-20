@@ -14,6 +14,13 @@
 2. use 'hexo g -d' to publish to master branch.
 
 #develop
-
+## base
 1. hexo g
 2. hexo s
+
+## new article
+hexo n "title"
+
+#deploy
+1. hexo g
+2. hexo d
