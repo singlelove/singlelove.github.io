@@ -309,6 +309,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/wireshark抓包分析及tcp、tls知识巩固/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Beijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOLACE ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/14/wireshark抓包分析及tcp、tls知识巩固/" itemprop="url">wireshark抓包分析及tcp、tls知识巩固</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T11:24:44+08:00">
+                2018-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/14/wireshark抓包分析及tcp、tls知识巩固/" class="leancloud_visitors" data-flag-title="wireshark抓包分析及tcp、tls知识巩固">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>某日，准备用fiddler抓包分析下某app的请求数据，结果发现无法捕获任何请求，google了一番，发现可能是app设置了不走系统代理<br>或者压根没用http请求数据，而是走了tcp。改用wireshark之后，成功捕获到了tcp，第一步障碍扫除。由于当初tcp掌握的不好，于是<br>先去恶补了一番。</p>
+<h1 id="tcp巩固"><a href="#tcp巩固" class="headerlink" title="tcp巩固"></a>tcp巩固</h1><h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><ul>
+<li>C端向S端发送SYN(syn=j)标记，请求建立连接<blockquote>
+<p>SYN：即是同步序列编号（Synchronize Sequence Numbers）</p>
+</blockquote>
+</li>
+<li>S端收到后，向C端发送确认包，包含SYN(syn=k)和ACK(ack=j+1)标记</li>
+<li>C端收到确认包后，再向S端发送ACK(ack=k+1)标记，表示收到确认包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">握手阶段：</span><br><span class="line">序号   方向 seq   ack</span><br><span class="line">1      A-&gt;B 10000 0</span><br><span class="line">2      B-&gt;A 20000 10000+1=10001</span><br><span class="line">3      A-&gt;B 10001 20000+1=20001</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>seq可以理解为当前端当前时刻已发送的数据字节数，ack可以理解为当前端当前时刻已收到的数据字节数。参考<br><a href="https://blog.csdn.net/a19881029/article/details/38091243" target="_blank" rel="noopener">理解TCP序列号（Sequence Number）和确认号（Acknowledgment Number）</a><br>一文的解释。</p>
+</blockquote>
+<p>…to be continued<br>参考资料：</p>
+<ul>
+<li><a href="https://blog.csdn.net/u013636377/article/details/50371933" target="_blank" rel="noopener">TCP三次握手连接及seq和ack号的正确理解</a></li>
+<li><a href="https://blog.csdn.net/a19881029/article/details/38091243" target="_blank" rel="noopener">理解TCP序列号（Sequence Number）和确认号（Acknowledgment Number）</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/跨域问题整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1991,7 +2139,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2040,7 +2188,7 @@
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:zhangbeijin@cmhi.chinamobile.com" target="_blank" title="E-Mail">
+                    <a href="mailto:529508942@qq.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
