@@ -5,7 +5,7 @@ tags: 问题记录
 categories: 开源工具
 ---
 # 前言
-此文是我在服务器部署RAP2过程中的流程及问题记录。
+此文是我在本地服务器部署RAP2过程中的流程及问题记录。
 * 服务器版本：centos 6.9
 * 数据库版本：MySQL 5.7
 * Node版本：8.9.4
@@ -21,6 +21,7 @@ categories: 开源工具
 # MySQL数据库安装
 [参考](http://blog.51cto.com/phpervip/2063092)
 > 原文step5、step8指令有误
+
 * Step1: 检测系统是否自带安装mysql
 ```
 yum list installed | grep mysql
@@ -41,9 +42,9 @@ yum repolist all | grep mysql
 设置启用mysql57
 yum repolist enabled | grep "mysql.-community."
 ```
-* Step4:安装mysql 服务器 命令：
- ```
- yum install mysql-community-server
+* Step4:安装MySQL服务器命令
+```
+yum install mysql-community-server
 ```
 * Step5:启动MySQL服务
 ```
@@ -61,6 +62,7 @@ mysql -uroot -p
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass2!';
 ```
 > 密码必须包含字母大小写、数字和特殊字符
+
 * Step8:设置远程用户
 ```
 create user 'root'@'%' identified by 'MyNewPass2!';
@@ -68,8 +70,10 @@ grant all privileges on *.* to 'root'@'%';
 flush privileges;
 ```
 > 新版本MySql把创建账户和赋予权限分开了，所以必须要两条命令
+
 ## 问题解决
 Q: navicat for mysql 链接时报错：1251-Client does not support authentication protocol requested by server
+
 A: 参考[此文](https://my.oschina.net/u/3295928/blog/1811804)，使用如下命令解决：
 ```
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'MyNewPass2!';
@@ -93,6 +97,7 @@ npm install
 > 由于step6初始化数据库表时默认针对的是开发环境，而我是跑的生产环境，所以顺便做了以下修改：
 > * package.json中修改create-db的NODE_ENV为production
 > * config.prod.ts中的database改成RAP2_DELOS_APP
+
 * 5、安装 && TypeScript编译
 ```
 npm install -g typescript
