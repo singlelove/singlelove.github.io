@@ -18,8 +18,8 @@ categories: 框架
 
 # 部署到github
 - 没账号的创建账号，然后创建一个repo，名称为`yourname.github.io`，其中yourname(以及之后出现的yourname)是你的github名称。
-{% qnimg article/Hexo搭建记录/createRepo.png %}
-{% qnimg article/Hexo搭建记录/repoConfig.png %}
+![](/images/article/Hexo搭建记录/createRepo.png) 
+![](/images/article/Hexo搭建记录/repoConfig.png) 
 - 添加SSH，参考github[官网文档](https://help.github.com/articles/connecting-to-github-with-ssh/)
 - 搭建开发环境
   1、创建hexo分支

@@ -67,7 +67,7 @@ node引入模块经历了3个步骤
 > Node单线程指JavaScript执行在单线程，内部I/O是有线程池的
 
 ## Node的异步I/O实现
-{% qnimg 'article/《深入浅出Node.js》学习笔记/Node的异步IO实现.png' %}
+![](/images/article/《深入浅出Node.js》学习笔记/Node的异步IO实现.png) 
 > nginx也摒弃了多线程的方式，采用了事件驱动来处理并发。node与nginx的比较
 > * nginx采用C编写，性能更高，更适合做web服务器，可用于反向代理、负载均衡，并且处理静态资源的能力更佳
 > * node场景更大，自身性能也不错，可以处理具体业务，比nginx更全面

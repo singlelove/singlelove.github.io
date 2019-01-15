@@ -15,9 +15,9 @@ categories: w3c
 最后只剩下jquery-confirm了，于是通过chrome的开发者工具继续单步debug。
 最终确认是的jquery-confirm中，通过ele.innerHtml将handlebar生成的html模板字符串塞入弹窗dom的过程中，造成了开头换行符的丢失。
 赋值前换行符还存在
-{% qnimg 'article/工作采坑记录：innerHtml中遇到的换行问题/linebreakExist.png' %}
+![](/images/article/工作采坑记录：innerHtml中遇到的换行问题/linebreakExist.png) 
 赋值后换行符已丢失
-{% qnimg 'article/工作采坑记录：innerHtml中遇到的换行问题/linebreakMissing.png' %}
+![](/images/article/工作采坑记录：innerHtml中遇到的换行问题/linebreakMissing.png) 
 至此，确认是innerHtml的锅。
 
 # workaround

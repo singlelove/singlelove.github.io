@@ -35,7 +35,7 @@ categories: jquery
 为什么本地***this.result_highlight.position().top***的值会出错呢，[jquery](https://api.jquery.com/position/)官网说明比较简略，position计算的是当前元素与父元素的相对距离。我首先想到的是会不会是本地的css样式影响了position的计算，于是把插件移到了最顶端，注释掉了几乎所有css，只保留了插件的样式，但是bug依然存在。
 # issues里找答案
 万般debug无果，我又把目光投向了插件在github上的issues，看是否有其他人遇到同样的问题，果然找到了一个[issue](https://github.com/harvesthq/chosen/issues/2506)，也找到了解决方案
-{% qnimg 'article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png' %}
+![](/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png) 
 试了一下，果然解决了。那为什么会产生这个问题呢，继续看issues下的评论，发现了这是jquery1.12中的一个[bug](https://github.com/jquery/jquery/commit/49833f7795d665ff1d543c4f71f29fca95b567e9)。在jquery1.12和2.2中top的计算出现了bug，把scrollTop的值也算进去了。
 # 总结
 总结了下，在这个bug的定位解决中还是走了不少弯路的。如果一开始就注意到官网中要求的插件依赖jQuery support: 1.7+，就能更早的定位到问题。总结了下插件bug的定位过程，感觉按照下面的过程去定位会比较好：

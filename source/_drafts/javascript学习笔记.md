@@ -58,7 +58,7 @@ arguments.callee是一个指向函数的指针(严格模式下，访问它会报
 # merge、assign、extend区别
 [参考](https://scarletsky.github.io/2016/04/02/assign-vs-extend-vs-merge-in-lodash/)
 - merge是递归拷贝，assign/extend是浅拷贝，如果属性本身是对象，则直接拷贝整个对象，如图
-{% qnimg article/javascript学习笔记/copy.png %}
+![](/images/article/javascript学习笔记/copy.png) 
 - assign不会拷贝原型链上的属性，而extend会。
 
 # javascript的事件驱动机制
