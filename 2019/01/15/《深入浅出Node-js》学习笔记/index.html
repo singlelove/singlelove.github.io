@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="问题记录," />
+  <meta name="keywords" content="学习," />
 
 
 
@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言使用jquery chosen插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。 scroll事件覆盖首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。 插件highlight事件断点调试仔细观察bug后发现滚动时行为正常，但是当">
-<meta name="keywords" content="问题记录">
+<meta name="description" content="node介绍特点 异步I/O 事件与回调函数 单线程  单线程弱点 无法利用多核CPU 错误会引起整个应用退出，应用的健壮性值得考验 大量计算占用CPU导致无法继续调用异步I/O  解决方案 Nnigx 反向代理，负载均衡，开多个进程，绑定多个端口 child_process fork出多个进程分担运算任务，共同监听一个端口 cluster模块，对child_process的一层封装，同时自带负载">
+<meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作采坑记录：jquery1.12版本top计算的坑">
-<meta property="og:url" content="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/index.html">
+<meta property="og:title" content="《深入浅出Node.js》学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/index.html">
 <meta property="og:site_name" content="SOLACE ZONE">
-<meta property="og:description" content="前言使用jquery chosen插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。 scroll事件覆盖首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。 插件highlight事件断点调试仔细观察bug后发现滚动时行为正常，但是当">
+<meta property="og:description" content="node介绍特点 异步I/O 事件与回调函数 单线程  单线程弱点 无法利用多核CPU 错误会引起整个应用退出，应用的健壮性值得考验 大量计算占用CPU导致无法继续调用异步I/O  解决方案 Nnigx 反向代理，负载均衡，开多个进程，绑定多个端口 child_process fork出多个进程分担运算任务，共同监听一个端口 cluster模块，对child_process的一层封装，同时自带负载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png">
-<meta property="og:updated_time" content="2018-04-17T09:16:14.430Z">
+<meta property="og:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/《深入浅出Node.js》学习笔记/Node的异步IO实现.png">
+<meta property="og:updated_time" content="2019-01-15T02:09:35.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作采坑记录：jquery1.12版本top计算的坑">
-<meta name="twitter:description" content="前言使用jquery chosen插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。 scroll事件覆盖首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。 插件highlight事件断点调试仔细观察bug后发现滚动时行为正常，但是当">
-<meta name="twitter:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png">
+<meta name="twitter:title" content="《深入浅出Node.js》学习笔记">
+<meta name="twitter:description" content="node介绍特点 异步I/O 事件与回调函数 单线程  单线程弱点 无法利用多核CPU 错误会引起整个应用退出，应用的健壮性值得考验 大量计算占用CPU导致无法继续调用异步I/O  解决方案 Nnigx 反向代理，负载均衡，开多个进程，绑定多个端口 child_process fork出多个进程分担运算任务，共同监听一个端口 cluster模块，对child_process的一层封装，同时自带负载">
+<meta name="twitter:image" content="http://p5763d6fj.bkt.clouddn.com/static/images/article/《深入浅出Node.js》学习笔记/Node的异步IO实现.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/"/>
 
 
 
 
 
-  <title>工作采坑记录：jquery1.12版本top计算的坑 | SOLACE ZONE</title>
+  <title>《深入浅出Node.js》学习笔记 | SOLACE ZONE</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Beijin">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">工作采坑记录：jquery1.12版本top计算的坑</h1>
+          <h1 class="post-title" itemprop="name headline">《深入浅出Node.js》学习笔记</h1>
         
 
         <div class="post-meta">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-17T16:32:03+08:00">
-                2018-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T10:02:50+08:00">
+                2019-01-15
               </time>
             
 
@@ -367,8 +367,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jquery/" itemprop="url" rel="index">
-                    <span itemprop="name">jquery</span>
+                  <a href="/categories/服务端/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端</span>
                   </a>
                 </span>
 
@@ -384,7 +384,7 @@
 
           
           
-             <span id="/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" class="leancloud_visitors" data-flag-title="工作采坑记录：jquery1.12版本top计算的坑">
+             <span id="/2019/01/15/《深入浅出Node-js》学习笔记/" class="leancloud_visitors" data-flag-title="《深入浅出Node.js》学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -415,18 +415,80 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用<a href="https://github.com/harvesthq/chosen" target="_blank" rel="noopener">jquery chosen</a>插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。</p>
-<h1 id="scroll事件覆盖"><a href="#scroll事件覆盖" class="headerlink" title="scroll事件覆盖"></a>scroll事件覆盖</h1><p>首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。</p>
-<h1 id="插件highlight事件断点调试"><a href="#插件highlight事件断点调试" class="headerlink" title="插件highlight事件断点调试"></a>插件highlight事件断点调试</h1><p>仔细观察bug后发现滚动时行为正常，但是当鼠标移到下拉菜单上，高亮选中项时，就会发生异常跳转，于是怀疑是插件highlight操作时出现异常。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Chosen.prototype.result_do_highlight = <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> high_bottom, high_top, maxHeight, visible_bottom, visible_top;</span><br><span class="line">  <span class="keyword">if</span> (el.length) &#123;</span><br><span class="line">    <span class="keyword">this</span>.result_clear_highlight();</span><br><span class="line">    <span class="keyword">this</span>.result_highlight = el;</span><br><span class="line">    <span class="keyword">this</span>.result_highlight.addClass(<span class="string">"highlighted"</span>);</span><br><span class="line">    maxHeight = <span class="built_in">parseInt</span>(<span class="keyword">this</span>.search_results.css(<span class="string">"maxHeight"</span>), <span class="number">10</span>);</span><br><span class="line">    visible_top = <span class="keyword">this</span>.search_results.scrollTop();</span><br><span class="line">    visible_bottom = maxHeight + visible_top;</span><br><span class="line">    high_top = <span class="keyword">this</span>.result_highlight.position().top + <span class="keyword">this</span>.search_results.scrollTop();</span><br><span class="line">    high_bottom = high_top + <span class="keyword">this</span>.result_highlight.outerHeight();</span><br><span class="line">    <span class="keyword">if</span> (high_bottom &gt;= visible_bottom) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.search_results.scrollTop((high_bottom - maxHeight) &gt; <span class="number">0</span> ? high_bottom - maxHeight : <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (high_top &lt; visible_top) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.search_results.scrollTop(high_top);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码是插件执行highlight的部分，对比官网例子之后发现当下拉菜单往下滚动时，本地<strong><em>this.result_highlight.position().top</em></strong>的值异常大，官网例子的对应参数取值在[0, 240]之间，也就是下拉菜单的可视区域的最大高度，于是确定是<strong><em>this.result_highlight.position().top</em></strong>的计算有问题。</p>
-<h1 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h1><p>为什么本地<strong><em>this.result_highlight.position().top</em></strong>的值会出错呢，<a href="https://api.jquery.com/position/" target="_blank" rel="noopener">jquery</a>官网说明比较简略，position计算的是当前元素与父元素的相对距离。我首先想到的是会不会是本地的css样式影响了position的计算，于是把插件移到了最顶端，注释掉了几乎所有css，只保留了插件的样式，但是bug依然存在。</p>
-<h1 id="issues里找答案"><a href="#issues里找答案" class="headerlink" title="issues里找答案"></a>issues里找答案</h1><p>万般debug无果，我又把目光投向了插件在github上的issues，看是否有其他人遇到同样的问题，果然找到了一个<a href="https://github.com/harvesthq/chosen/issues/2506" target="_blank" rel="noopener">issue</a>，也找到了解决方案<br><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png"><br>试了一下，果然解决了。那为什么会产生这个问题呢，继续看issues下的评论，发现了这是jquery1.12中的一个<a href="https://github.com/jquery/jquery/commit/49833f7795d665ff1d543c4f71f29fca95b567e9" target="_blank" rel="noopener">bug</a>。在jquery1.12和2.2中top的计算出现了bug，把scrollTop的值也算进去了。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总结了下，在这个bug的定位解决中还是走了不少弯路的。如果一开始就注意到官网中要求的插件依赖jQuery support: 1.7+，就能更早的定位到问题。总结了下插件bug的定位过程，感觉按照下面的过程去定位会比较好：</p>
-<ul>
-<li>1、看本地是否满足了插件依赖的版本要求</li>
-<li>2、看issues里是否有别人遇到了同样的问题</li>
-<li>3、最后再断点插件相关部分的代码自己找原因</li>
+        <h1 id="node介绍"><a href="#node介绍" class="headerlink" title="node介绍"></a>node介绍</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>异步I/O</li>
+<li>事件与回调函数</li>
+<li>单线程</li>
 </ul>
+<h2 id="单线程弱点"><a href="#单线程弱点" class="headerlink" title="单线程弱点"></a>单线程弱点</h2><ul>
+<li>无法利用多核CPU</li>
+<li>错误会引起整个应用退出，应用的健壮性值得考验</li>
+<li>大量计算占用CPU导致无法继续调用异步I/O</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>Nnigx 反向代理，负载均衡，开多个进程，绑定多个端口</li>
+<li>child_process fork出多个进程分担运算任务，共同监听一个端口</li>
+<li>cluster模块，对child_process的一层封装，同时自带负载均衡，默认使用Round-Robin算法实现，master监听TCP端口，并根据RR算法将请求交给钦定的worker进行处理。</li>
+<li>pm2进程管理工具，基于cluster模块实现负载均衡<blockquote>
+<p>多进程监听同一端口，存在“惊群”现象，效率低下，而且由于处理的进程是哪个不可控，因此没办法做负载均衡。<br>nginx做负载均衡，把请求反向代理给node，缺点是与nginx耦合度太高。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>I/O密集型，明显优势</li>
+<li>CPU密集型，得益于V8的深度优化，node的运算能力并不差，只是受限于单线程带来的影响，可通过C/C++扩展进一步压榨单个CPU的性能或者通过子进程的方式利用多核CPU</li>
+</ul>
+<h1 id="模块机制"><a href="#模块机制" class="headerlink" title="模块机制"></a>模块机制</h1><p>node引入模块经历了3个步骤</p>
+<ul>
+<li>路径分析</li>
+<li>文件定位</li>
+<li>编译执行</li>
+</ul>
+<h2 id="路径分析"><a href="#路径分析" class="headerlink" title="路径分析"></a>路径分析</h2><ul>
+<li><strong>核心模块</strong>，如http、fs、path等</li>
+<li>. 或 .. 开始的相对路径<strong>文件模块</strong></li>
+<li>以 / 开始的绝对路径<strong>文件模块</strong></li>
+<li>非路径形式的<strong>文件模块</strong>，如自定义的connect模块</li>
+</ul>
+<h2 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h2><ul>
+<li>扩展名分析，按照js、json、node的次序</li>
+<li>目录分析和包<blockquote>
+<p>为提升性能，引入json、node文件时，带上扩展名会比不带扩展名更快</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="编译执行"><a href="#编译执行" class="headerlink" title="编译执行"></a>编译执行</h2><ul>
+<li>js文件。通过fs模块同步读取文件后编译执行</li>
+<li>node文件(C/C++编写的扩展文件)。通过dlopen()方法加载最后编译生成的文件</li>
+<li>json文件。通过fs模块同步读取文件后，用JSON.parse()解析返回结果</li>
+<li>其余扩展名文件。当做js文件载入<blockquote>
+<p>在编译的过程中，Node对获取的JavaScript文件内容进行了头尾包装。在头部添加<br>了(function (exports, require, module, <strong>filename, </strong>dirname) {\n，在尾部添加了\n});<br>以此达到作用域隔离的目的。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="模块调用栈"><a href="#模块调用栈" class="headerlink" title="模块调用栈"></a>模块调用栈</h2><ul>
+<li>C/C++内建模块，属于核心模块，提供API给JavaScript核心模块和第三方JavaScript文件模块调用</li>
+<li>JavaScript核心模块，两个职责：一种是C/C++内建模块的封装层和桥接层，供文件模块调用；一种是纯粹的功能模块，不和底层打交道。</li>
+<li>文件模块，通常由第三方编写。</li>
+</ul>
+<h1 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h1><h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ul>
+<li>read：重复检查I/O状态</li>
+<li>select/poll：通过数组/链表储存事件状态，达到一次查询多个I/O完成状态的目的</li>
+<li>epoll/kqueue：进入轮询时未检测到I/O完成就进入休眠(休眠时CPU几乎闲置)，直到事件通知、执行回调(kqueue的实现方式与epoll类似，不过它仅在FreeBSD系统下存在。)</li>
+<li>线程池模拟异步I/O<blockquote>
+<p>Node单线程指JavaScript执行在单线程，内部I/O是有线程池的</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Node的异步I-O实现"><a href="#Node的异步I-O实现" class="headerlink" title="Node的异步I/O实现"></a>Node的异步I/O实现</h2><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/《深入浅出Node.js》学习笔记/Node的异步IO实现.png">
+<blockquote>
+<p>nginx也摒弃了多线程的方式，采用了事件驱动来处理并发。node与nginx的比较</p>
+<ul>
+<li>nginx采用C编写，性能更高，更适合做web服务器，可用于反向代理、负载均衡，并且处理静态资源的能力更佳</li>
+<li>node场景更大，自身性能也不错，可以处理具体业务，比nginx更全面</li>
+</ul>
+</blockquote>
+<p>缺少适用项目实践，决定暂缓继续学习。<br>有一个疑问：对于node做接口合并，到底是应该把接口数据一股脑丢给前端合适，还是把数据的组装也放在node合适？<br>to be continued…</p>
 
       
     </div>
@@ -471,7 +533,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" title="工作采坑记录：jquery1.12版本top计算的坑">http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/</a>
+    <a href="http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/" title="《深入浅出Node.js》学习笔记">http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -486,7 +548,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题记录/" rel="tag"># 问题记录</a>
+            <a href="/tags/学习/" rel="tag"># 学习</a>
           
         </div>
       
@@ -514,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/08/jsp+react项目webpack构建优化记录/" rel="next" title="jsp + react项目webpack构建优化记录">
-                <i class="fa fa-chevron-left"></i> jsp + react项目webpack构建优化记录
+              <a href="/2019/01/04/2019了解的新名词记录/" rel="next" title="2019了解的新名词记录">
+                <i class="fa fa-chevron-left"></i> 2019了解的新名词记录
               </a>
             
           </div>
@@ -523,10 +585,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/31/工作采坑记录：innerHtml中遇到的换行问题/" rel="prev" title="工作采坑记录: innerHtml中遇到的换行问题">
-                工作采坑记录: innerHtml中遇到的换行问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -690,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scroll事件覆盖"><span class="nav-number">2.</span> <span class="nav-text">scroll事件覆盖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件highlight事件断点调试"><span class="nav-number">3.</span> <span class="nav-text">插件highlight事件断点调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css样式"><span class="nav-number">4.</span> <span class="nav-text">css样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#issues里找答案"><span class="nav-number">5.</span> <span class="nav-text">issues里找答案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#node介绍"><span class="nav-number">1.</span> <span class="nav-text">node介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单线程弱点"><span class="nav-number">1.2.</span> <span class="nav-text">单线程弱点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">1.3.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.4.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块机制"><span class="nav-number">2.</span> <span class="nav-text">模块机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路径分析"><span class="nav-number">2.1.</span> <span class="nav-text">路径分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件定位"><span class="nav-number">2.2.</span> <span class="nav-text">文件定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译执行"><span class="nav-number">2.3.</span> <span class="nav-text">编译执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块调用栈"><span class="nav-number">2.4.</span> <span class="nav-text">模块调用栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步I-O"><span class="nav-number">3.</span> <span class="nav-text">异步I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方式"><span class="nav-number">3.1.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node的异步I-O实现"><span class="nav-number">3.2.</span> <span class="nav-text">Node的异步I/O实现</span></a></li></ol></li></ol></div>
             
 
           </div>

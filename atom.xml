@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-03T08:29:26.988Z</updated>
+  <updated>2019-01-15T02:09:35.182Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《深入浅出Node.js》学习笔记</title>
+    <link href="http://yoursite.com/2019/01/15/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BANode-js%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/</id>
+    <published>2019-01-15T02:02:50.000Z</published>
+    <updated>2019-01-15T02:09:35.182Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;node介绍&quot;&gt;&lt;a href=&quot;#node介绍&quot; class=&quot;headerlink&quot; title=&quot;node介绍&quot;&gt;&lt;/a&gt;node介绍&lt;/h1&gt;&lt;h2 id=&quot;特点&quot;&gt;&lt;a href=&quot;#特点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="服务端" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019了解的新名词记录</title>
+    <link href="http://yoursite.com/2019/01/04/2019%E4%BA%86%E8%A7%A3%E7%9A%84%E6%96%B0%E5%90%8D%E8%AF%8D%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2019/01/04/2019了解的新名词记录/</id>
+    <published>2019-01-04T06:05:00.000Z</published>
+    <updated>2019-01-15T02:08:44.167Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="新知识" scheme="http://yoursite.com/categories/%E6%96%B0%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>开源接口管理工具RAP2部署</title>
@@ -125,7 +177,7 @@
     <link href="http://yoursite.com/2018/06/15/web%E5%AE%89%E5%85%A8/"/>
     <id>http://yoursite.com/2018/06/15/web安全/</id>
     <published>2018-06-15T06:55:23.000Z</published>
-    <updated>2018-11-20T01:39:53.034Z</updated>
+    <updated>2019-01-04T07:44:21.173Z</updated>
     
     <summary type="html">
     
@@ -133,7 +185,7 @@
       
         
         
-          &lt;h1 id=&quot;XSS攻击&quot;&gt;&lt;a href=&quot;#XSS攻击&quot; class=&quot;headerlink&quot; title=&quot;XSS攻击&quot;&gt;&lt;/a&gt;XSS攻击&lt;/h1&gt;&lt;h2 id=&quot;危害&quot;&gt;&lt;a href=&quot;#危害&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;XSS攻击&quot;&gt;&lt;a href=&quot;#XSS攻击&quot; class=&quot;headerlink&quot; title=&quot;XSS攻击&quot;&gt;&lt;/a&gt;XSS攻击&lt;/h1&gt;&lt;p&gt;可参考美团技术团队的&lt;a
         
       
     

@@ -309,6 +309,396 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/《深入浅出Node-js》学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Beijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOLACE ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/15/《深入浅出Node-js》学习笔记/" itemprop="url">《深入浅出Node.js》学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T10:02:50+08:00">
+                2019-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务端/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/15/《深入浅出Node-js》学习笔记/" class="leancloud_visitors" data-flag-title="《深入浅出Node.js》学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="node介绍"><a href="#node介绍" class="headerlink" title="node介绍"></a>node介绍</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>异步I/O</li>
+<li>事件与回调函数</li>
+<li>单线程</li>
+</ul>
+<h2 id="单线程弱点"><a href="#单线程弱点" class="headerlink" title="单线程弱点"></a>单线程弱点</h2><ul>
+<li>无法利用多核CPU</li>
+<li>错误会引起整个应用退出，应用的健壮性值得考验</li>
+<li>大量计算占用CPU导致无法继续调用异步I/O</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>Nnigx 反向代理，负载均衡，开多个进程，绑定多个端口</li>
+<li>child_process fork出多个进程分担运算任务，共同监听一个端口</li>
+<li>cluster模块，对child_process的一层封装，同时自带负载均衡，默认使用Round-Robin算法实现，master监听TCP端口，并根据RR算法将请求交给钦定的worker进行处理。</li>
+<li>pm2进程管理工具，基于cluster模块实现负载均衡<blockquote>
+<p>多进程监听同一端口，存在“惊群”现象，效率低下，而且由于处理的进程是哪个不可控，因此没办法做负载均衡。<br>nginx做负载均衡，把请求反向代理给node，缺点是与nginx耦合度太高。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>I/O密集型，明显优势</li>
+<li>CPU密集型，得益于V8的深度优化，node的运算能力并不差，只是受限于单线程带来的影响，可通过C/C++扩展进一步压榨单个CPU的性能或者通过子进程的方式利用多核CPU</li>
+</ul>
+<h1 id="模块机制"><a href="#模块机制" class="headerlink" title="模块机制"></a>模块机制</h1><p>node引入模块经历了3个步骤</p>
+<ul>
+<li>路径分析</li>
+<li>文件定位</li>
+<li>编译执行</li>
+</ul>
+<h2 id="路径分析"><a href="#路径分析" class="headerlink" title="路径分析"></a>路径分析</h2><ul>
+<li><strong>核心模块</strong>，如http、fs、path等</li>
+<li>. 或 .. 开始的相对路径<strong>文件模块</strong></li>
+<li>以 / 开始的绝对路径<strong>文件模块</strong></li>
+<li>非路径形式的<strong>文件模块</strong>，如自定义的connect模块</li>
+</ul>
+<h2 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h2><ul>
+<li>扩展名分析，按照js、json、node的次序</li>
+<li>目录分析和包<blockquote>
+<p>为提升性能，引入json、node文件时，带上扩展名会比不带扩展名更快</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="编译执行"><a href="#编译执行" class="headerlink" title="编译执行"></a>编译执行</h2><ul>
+<li>js文件。通过fs模块同步读取文件后编译执行</li>
+<li>node文件(C/C++编写的扩展文件)。通过dlopen()方法加载最后编译生成的文件</li>
+<li>json文件。通过fs模块同步读取文件后，用JSON.parse()解析返回结果</li>
+<li>其余扩展名文件。当做js文件载入<blockquote>
+<p>在编译的过程中，Node对获取的JavaScript文件内容进行了头尾包装。在头部添加<br>了(function (exports, require, module, <strong>filename, </strong>dirname) {\n，在尾部添加了\n});<br>以此达到作用域隔离的目的。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="模块调用栈"><a href="#模块调用栈" class="headerlink" title="模块调用栈"></a>模块调用栈</h2><ul>
+<li>C/C++内建模块，属于核心模块，提供API给JavaScript核心模块和第三方JavaScript文件模块调用</li>
+<li>JavaScript核心模块，两个职责：一种是C/C++内建模块的封装层和桥接层，供文件模块调用；一种是纯粹的功能模块，不和底层打交道。</li>
+<li>文件模块，通常由第三方编写。</li>
+</ul>
+<h1 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h1><h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ul>
+<li>read：重复检查I/O状态</li>
+<li>select/poll：通过数组/链表储存事件状态，达到一次查询多个I/O完成状态的目的</li>
+<li>epoll/kqueue：进入轮询时未检测到I/O完成就进入休眠(休眠时CPU几乎闲置)，直到事件通知、执行回调(kqueue的实现方式与epoll类似，不过它仅在FreeBSD系统下存在。)</li>
+<li>线程池模拟异步I/O<blockquote>
+<p>Node单线程指JavaScript执行在单线程，内部I/O是有线程池的</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Node的异步I-O实现"><a href="#Node的异步I-O实现" class="headerlink" title="Node的异步I/O实现"></a>Node的异步I/O实现</h2><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/《深入浅出Node.js》学习笔记/Node的异步IO实现.png">
+<blockquote>
+<p>nginx也摒弃了多线程的方式，采用了事件驱动来处理并发。node与nginx的比较</p>
+<ul>
+<li>nginx采用C编写，性能更高，更适合做web服务器，可用于反向代理、负载均衡，并且处理静态资源的能力更佳</li>
+<li>node场景更大，自身性能也不错，可以处理具体业务，比nginx更全面</li>
+</ul>
+</blockquote>
+<p>缺少适用项目实践，决定暂缓继续学习。<br>有一个疑问：对于node做接口合并，到底是应该把接口数据一股脑丢给前端合适，还是把数据的组装也放在node合适？<br>to be continued…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/2019了解的新名词记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Beijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOLACE ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/2019了解的新名词记录/" itemprop="url">2019了解的新名词记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T14:05:00+08:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/新知识/" itemprop="url" rel="index">
+                    <span itemprop="name">新知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/04/2019了解的新名词记录/" class="leancloud_visitors" data-flag-title="2019了解的新名词记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文内容主要包括两点：</p>
+<ul>
+<li>2019年看到的一些新名词的记录，简单了解了下是什么和使用场景，便与后续有需求时查阅。</li>
+<li>收藏了一些暂时未看的文章</li>
+</ul>
+<h1 id="新名词"><a href="#新名词" class="headerlink" title="新名词"></a>新名词</h1><h2 id="Rxjs"><a href="#Rxjs" class="headerlink" title="Rxjs"></a>Rxjs</h2><p>What is it：类似于Redux跟Mobx的状态管理方案，<a href="https://zhuanlan.zhihu.com/p/33382396" target="_blank" rel="noopener">参考</a><br>When to use：适合复杂的异步时间和数据流等，<a href="https://www.v2ex.com/t/348135" target="_blank" rel="noopener">参考</a></p>
+<h2 id="quicklink"><a href="#quicklink" class="headerlink" title="quicklink"></a>quicklink</h2><p>What is it：会预加载可视窗口内的链接，来提升后续访问的速度。<a href="https://juejin.im/post/5c21f8435188256d12597789" target="_blank" rel="noopener">参考</a></p>
+<h2 id="sharp"><a href="#sharp" class="headerlink" title="sharp"></a>sharp</h2><p>What is it：node上的高性能图片处理工具。<a href="https://github.com/lovell/sharp?utm_source=75weekly&amp;utm_medium=75weekly" target="_blank" rel="noopener">参考</a></p>
+<h2 id="flutter"><a href="#flutter" class="headerlink" title="flutter"></a>flutter</h2><p>What is it：Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 </p>
+<h1 id="收藏"><a href="#收藏" class="headerlink" title="收藏"></a>收藏</h1><ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=2653579929&amp;idx=1&amp;sn=6d3abb730c63753615d0fc1d1233a2e6&amp;chksm=84b3b89eb3c43188a4f2818f8ced5d811e5b41af4a1456a4f6361b8aa9e75ddbeaf0b59486f8&amp;scene=0&amp;xtrack=1&amp;ascene=7&amp;devicetype=android-27&amp;version=2607033c&amp;" target="_blank" rel="noopener">node的调试</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/开源接口管理工具RAP2部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,20 +1604,29 @@
       
         
           
-            <h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><h2 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h2><ul>
+            <h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><p>可参考美团技术团队的<a href="https://tech.meituan.com/fe_security.html" target="_blank" rel="noopener">如何防止XSS攻击</a>一文</p>
+<h2 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h2><ul>
 <li>窃取cookie</li>
 <li>劫持流量实现恶意跳转</li>
 </ul>
 <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
 <li>反射型(非持久型)</li>
 <li>储存型(持久型)</li>
+<li>DOM型</li>
 </ul>
 <h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><ul>
+<li><del>输入过滤</del> (<strong>不推荐，会引入很大的不确定性和乱码问题</strong>)</li>
 <li>标签过滤，script、img、a</li>
 <li>编码，&lt;&gt;转码</li>
 <li>限制输入长度</li>
 </ul>
-<h1 id="CSRF跨站点请求伪造"><a href="#CSRF跨站点请求伪造" class="headerlink" title="CSRF跨站点请求伪造"></a>CSRF跨站点请求伪造</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>1、用户登录目标网站，并未退出<br>2、用户访问了攻击者的不安全网站，或者点击了攻击者的不安全链接<br>3、攻击者向目标网站发送请求，由于用户未登出，请求自动带上了cookie，被目标网站识别为用户的操作。</p>
+<h1 id="CSRF跨站点请求伪造"><a href="#CSRF跨站点请求伪造" class="headerlink" title="CSRF跨站点请求伪造"></a>CSRF跨站点请求伪造</h1><p>可参考美团技术团队的<a href="https://tech.meituan.com/fe_security_csrf.html" target="_blank" rel="noopener">如何防止CSRF攻击</a>一文</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>1、用户登录目标网站，并未退出<br>2、用户访问了攻击者的不安全网站，或者点击了攻击者的不安全链接<br>3、攻击者向目标网站发送请求，由于用户未登出，请求自动带上了cookie，被目标网站识别为用户的操作。</p>
+<h2 id="防范-1"><a href="#防范-1" class="headerlink" title="防范"></a>防范</h2><ul>
+<li>CSRF自动防御策略：同源检测（Origin 和 Referer 验证）。</li>
+<li>CSRF主动防御措施：Token验证 或者 双重Cookie验证 以及配合Samesite Cookie。</li>
+<li>保证页面的幂等性，后端接口不要在GET页面中做用户操作。</li>
+</ul>
 <h2 id="to-be-continued"><a href="#to-be-continued" class="headerlink" title="to be continued"></a>to be continued</h2>
           
         
@@ -1752,410 +2151,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/angular学习笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang Beijin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SOLACE ZONE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/angular学习笔记/" itemprop="url">angular学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T16:58:58+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/angular/" itemprop="url" rel="index">
-                    <span itemprop="name">angular</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/06/angular学习笔记/" class="leancloud_visitors" data-flag-title="angular学习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>引用图片模板时，一定要用ng-src替代src，不然src会直接使用&#123;&#123;&#125;&#125;作为图片地址，并不会去解析。</li>
-<li>内容的更新由控制器负责。不同区域有不同模板的话，一种方式是使用ng-show/ng-hide，即有内容了才显示出来，第二种方式是使用ng-include，加载不同模板，第三种方式是使用ng-switch，类似tab标签效果</li>
-<li>ngrepeat默认不允许有重复的数据，可以通过加track by $index解决<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeat.png"></li>
-<li>ng-repeat下每一个子代都有一个scope，因此要用$root（验证成功，模板里用$root，控制器里用$rootscope）或者$parent（未验证成功）定义才能在外层访问。<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/ngrepeatScope.png"></li>
-<li>Angular异步编程用”$q”，defer对象的声明及promise对象的返回放在异步操作外层<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/defer.png"></li>
-<li>双向绑定“失效”的原因<ul>
-<li>$scope作用域的不同造成的</li>
-<li>绑定的变量在第三方插件(或者监听器中发生改变)，则需要调用$scope.$apply()手动更新视图。</li>
-</ul>
-</li>
-<li>关于如何在angular完全加载，即各种ng指令编译链接完成，生成了动态的dom组件之后执行某些操作：自定义directive，并在link里添加$timeout，把要执行的操作放到$timeout函数里，delay可设置为0。<a href="https://github.com/angular/angular.js/issues/734" target="_blank" rel="noopener">未找到满意方法</a><img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/afterRender.png"></li>
-<li>尽量不要直接用&#123;&#123;&#125;&#125;的方式绑定文本，而用ng-bind，否则在加载缓慢时，浏览器会直接显示&#123;&#123;&#125;&#125;，用户体验不好</li>
-<li>Angular内置过滤器filter<ul>
-<li>currency: currency允许我们设置自己的货币符号，默认情况下会采用客户端所处区域的货币符号。可以这样使用：&#123;&#123; 3600 | currency: “$￥”&#125;&#125;返回结果为$￥123.00</li>
-<li>number: number过滤器将数字格式化成文本，它的参数是可选的，用来控制小数点后的截取位数如果传入的是一个非数字字符，会返回空字符串  可以这样使用：&#123;&#123; 3600 | number:2&#125;&#125;返回结果为：3,600.00</li>
-<li>lowercase: lowercase将字符串转换为小写可以这样使用：&#123;&#123; “HEllo” | lowercase&#125;&#125;返回结果为：hello</li>
-<li>uppercase: uppercase将字符串转换为大写可以这样使用：&#123;&#123; “HEllo” | uppercase&#125;&#125;返回结果为：HELLO</li>
-<li>json: json过滤器可以将一个JSON或者JavaScript对象转换成字符串。这个过滤器对调试相当有用可以这样使用：&#123;&#123; &#123;”name”:”dreamapple”,”language”:”AngularJS”&#125; | json&#125;&#125;返回结果为：&#123; “name”: “dreamapple”, “language”: “AngularJS” &#125;</li>
-<li>date: date过滤器将日期过滤成你想要的格式，这个实在是很好的过滤器。这个过滤器用法很多我这里列举几种常用的&#123;&#123; today | date: “yyyy - mm - dd”&#125;&#125;结果为：2015 - 15 - 13&#123;&#123; today | date: “yyyy - mm - dd HH:mm::ss”&#125;&#125;    结果为：2015 - 18 - 13 20:18::38</li>
-</ul>
-</li>
-<li>directive中的特殊符号<ul>
-<li>scope会为指令创建独立的scope，左边为属性或函数名，右边为绑定属性或函数，可用修饰符罗列如下：<ul>
-<li>‘=’：绑定标签中的属性所指定的$scope上的属性；</li>
-<li>‘&amp;’：绑定标签中的属性所指定的$scope上的属性，该属性必须为函数回调；</li>
-<li>‘@’：绑定标签上的属性所指定的html字面量/直接值；<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-1.png">
-‘=’表示指令自身的独立scope中$scope.customer对应的标签属性值为info<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-2.png">
-<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-3.png">
-‘&amp;’表示将标签属性中的onClose函数绑定当指令自身独立scope中的$scope.close属性上  <img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/directive-4.png"></li>
-</ul>
-</li>
-<li>Require表示指令依赖的controller，可用修饰符如下<ul>
-<li>‘^’前缀会使$compile在其父元素上搜索，找不到会抛出错误；</li>
-<li>‘?’前缀在当前指令寻找，找不到会将null作为第四个参数传入link；</li>
-<li>无前缀则只在当前指令寻找，找不到会抛出错误；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>动态生成的directive，若其scope不为空，则生成的directive的scope的父scope是用于生成directive的directive的scope<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnProjectItem.png">
-<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/angular学习笔记/svnAddItem.png">
-如图，普通svnProjectItem的父scope是A，svnAddItem的scope为B，通过svnAddItem生成的svnProjectItem的父scope是svnAddItem的scope即B，因此需要在svnAddItem中再指向A中的方法，才能使svnProjectItem指令中的delete方法正确调用到A中的对应方法</li>
-<li>如果要将directive A中的方法暴露在其他directive B时，将方法写在A指令的controller中，在B指令中通过require: ‘A’的形式引入A的controller，从而在B中完成调用。</li>
-<li>Fis3构建时，angular的依赖注入一定要采用标准的写法，否则会出现压缩后的代码无法正确注入依赖的情况</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/Hexo搭建记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang Beijin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SOLACE ZONE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/Hexo搭建记录/" itemprop="url">Hexo搭建记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T10:02:53+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/06/Hexo搭建记录/" class="leancloud_visitors" data-flag-title="Hexo搭建记录">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文是我在Hexo搭建、主题配置及插件安装过程中的记录，旨在帮助那些同样想学习使用Hexo搭建自己个人站点的朋友。不过由于本文是在我搭建Hexo一个多月之后才开始写作的，因此难免存在一些纰漏之处，欢迎指正。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1.安装git"></a>1.安装git</h2><ul>
-<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a></li>
-<li>安装：一路next，安装完成之后，打开git bash，输入git version显示版本号表示安装成功</li>
-</ul>
-<h2 id="2-安装nodejs"><a href="#2-安装nodejs" class="headerlink" title="2.安装nodejs"></a>2.安装nodejs</h2><ul>
-<li><a href="http://nodejs.cn/" target="_blank" rel="noopener">下载地址</a></li>
-<li>安装：一路next，安装完成之后，打开git bash，输入node -v显示版本号表示安装成功</li>
-</ul>
-<h1 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h1><ul>
-<li>没账号的创建账号，然后创建一个repo，名称为<code>yourname.github.io</code>，其中yourname(以及之后出现的yourname)是你的github名称。<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/Hexo搭建记录/createRepo.png">
-<img src="http://p5763d6fj.bkt.clouddn.com/static/images/article/Hexo搭建记录/repoConfig.png"></li>
-<li>添加SSH，参考github<a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="noopener">官网文档</a></li>
-<li><p>搭建开发环境<br>1、创建hexo分支<br>2、设置hexo为默认分支<br>3、在git bash中使用git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourname/yourname.github.io.git拷贝仓库到本地<br>4、在本地yourname.github.io文件夹下通过git bash执行以下命令安装hexo及相关依赖</p>
-<blockquote>
-<p>npm install hexo-cli -g<br>hexo init<br>npm install<br>npm install hexo-deployer-git --save</p>
-</blockquote>
-<p>5、修改_config.yml中的deploy参数，分支为master<br>6、执行以下命令将改动提交到github</p>
-<blockquote>
-<p>git add .<br>git commit -m “…”<br>git push origin hexo</p>
-</blockquote>
-<p>7、执行以下命令可进行本地开发，打开localhost:4000即可浏览</p>
-<blockquote>
-<p>hexo g<br>hexo s</p>
-</blockquote>
-<p>8、执行以下命令可部署到github，打开yourname.github.io即可浏览</p>
-<blockquote>
-<p>hexo g<br>hexo d</p>
-</blockquote>
-<p>至此，yourname.github.io仓库上有两个分支，hexo分支用来存放网站原始文件，master分支用来存放生成的静态文件，这样即使换了电脑，也可以通过上述3、4两步快速搭建本地开发环境(此时第4步中，只需要执行npm install即可)。</p>
-</li>
-</ul>
-<h1 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h1><p>主流是NexT主题，安装没什么难度，可以参考<a href="http://theme-next.iissnan.com/third-party-services.html#livere" target="_blank" rel="noopener">官方文档</a></p>
-<h1 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h1><ul>
-<li>评论系统——<a href="http://theme-next.iissnan.com/third-party-services.html#livere" target="_blank" rel="noopener">来必力</a></li>
-<li>访问数统计——<a href="http://theme-next.iissnan.com/third-party-services.html#analytics-busuanzi" target="_blank" rel="noopener">不蒜子</a></li>
-<li>阅读次数统计——<a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">LeanCloud</a></li>
-<li>搜索服务——<a href="http://theme-next.iissnan.com/third-party-services.html#algolia-search" target="_blank" rel="noopener">Algolia</a></li>
-</ul>
-<h1 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h1><h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>在git bash中通过以下命令新建文章</p>
-<blockquote>
-<p>hexo n “articleTitle”</p>
-</blockquote>
-<p>然后在source/_posts 目录中就可找到”articleTitle.md”文件，之后可通过Markdown编辑器打开进行编辑，作者是用的是<a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">CmdMarkdown</a></p>
-<blockquote>
-<p>CmdMarkdown似乎只支持在线编辑，无法保存到本地，因此需要编辑完成后复制到本地文件里。此外由于不同markdown编辑器的渲染方式不同，因此用编辑器看到的效果与Hexo最终渲染的效果不尽相同。</p>
-</blockquote>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>插入图片有两种方式，一种是将图片放在项目的资源文件中，直接部署到github上；一种是图床上，通过外链引入。<br>第一种方式在图片不多的情况下可以使用，比较方便，配置参考<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">官方文档</a><br>第二种方式推荐选用<a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛</a>作为图床，相关配置可参考文章<a href="https://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo/" target="_blank" rel="noopener">“使用七牛为Hexo存储图片等资源”</a></p>
-<blockquote>
-<p>使用hexo-qiniu-sync插件时，请谨慎执行hexo clean命令，因为会清空资源目录。</p>
-</blockquote>
-<blockquote>
-<p>offline离线、在线模式切换时，需要先hexo clean才能生效</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2210,7 +2205,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2221,7 +2216,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
