@@ -1,0 +1,292 @@
+---
+title: react中mixin的危害
+date: 2019-01-16 10:25:46
+tags: 学习
+categories: react
+---
+# 问题
+## 隐式依赖
+mixin可能引入不可见的方法、属性、状态，降低了代码的可读性和可维护性，当出现mixin的相互依赖和耦合时，这种情况更甚。
+
+## 命名冲突
+引入多个mixin可能导致方法、属性、状态的冲突
+
+## 增加复杂性
+由于 mixins 是侵入式的，它改变了原组件，所以修改 mixins 等于修改原组件，随着需求的增长 mixins 将变得复杂，导致滚雪球的复杂性。
+详见[mixins-cause-snowballing-complexity](https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html#mixins-cause-snowballing-complexity)
+
+# 解决方案
+## 性能优化场景
+使用PureComponent替代PureRenderMixin
+
+## 数据订阅场景
+使用HOC替代mixin
+比如下面的场景：
+```jsx
+var SubscriptionMixin = {
+  getInitialState: function() {
+    return {
+      comments: DataSource.getComments()
+    };
+  },
+
+  componentDidMount: function() {
+    DataSource.addChangeListener(this.handleChange);
+  },
+
+  componentWillUnmount: function() {
+    DataSource.removeChangeListener(this.handleChange);
+  },
+
+  handleChange: function() {
+    this.setState({
+      comments: DataSource.getComments()
+    });
+  }
+};
+
+var CommentList = React.createClass({
+  mixins: [SubscriptionMixin],
+
+  render: function() {
+    // Reading comments from state managed by mixin.
+    var comments = this.state.comments;
+    return (
+      <div>
+        {comments.map(function(comment) {
+          return <Comment comment={comment} key={comment.id} />
+        })}
+      </div>
+    )
+  }
+});
+
+module.exports = CommentList;
+```
+可以改写成
+
+```jsx
+function withSubscription(WrappedComponent) {
+  return React.createClass({
+    getInitialState: function() {
+      return {
+        comments: DataSource.getComments()
+      };
+    },
+
+    componentDidMount: function() {
+      DataSource.addChangeListener(this.handleChange);
+    },
+
+    componentWillUnmount: function() {
+      DataSource.removeChangeListener(this.handleChange);
+    },
+
+    handleChange: function() {
+      this.setState({
+        comments: DataSource.getComments()
+      });
+    },
+
+    render: function() {
+      // Use JSX spread syntax to pass all props and state down automatically.
+      return <WrappedComponent {...this.props} {...this.state} />;
+    }
+  });
+}
+
+// Optional change: convert CommentList to a function component
+// because it doesn't use lifecycle methods or state.
+function CommentList(props) {
+  var comments = props.comments;
+  return (
+    <div>
+      {comments.map(function(comment) {
+        return <Comment comment={comment} key={comment.id} />
+      })}
+    </div>
+  )
+}
+
+// Instead of declaring CommentListWithSubscription,
+// we export the wrapped component right away.
+module.exports = withSubscription(CommentList);
+```
+**个人理解**：HOC可以解决mixin上述问题中的后两点。
+* 因为多个mixin共同作用时可能相互影响，而HOC是层层包裹的，不会出现名称污染；
+* HOC不是侵入式的，没有改动原组件
+HOC与mixin的区别可参考下图：
+![](/images/article/react中mixin的危害/HOC&mixin.png) 
+高阶组件属于函数式编程(functional programming)思想，对于被包裹的组件时不会感知到高阶组件的存在，
+而高阶组件返回的组件会在原来的组件之上具有功能增强的效果。而Mixin这种混入的模式，会给组件不断增加新的方法和属性，
+组件本身不仅可以感知，甚至需要做相关的处理(例如命名冲突、状态维护)，一旦混入的模块变多时，整个组件就变的难以维护
+
+## 共用渲染
+使用组件的形式替代
+```jsx
+var RowMixin = {
+  // Called by components from render()
+  renderHeader: function() {
+    return (
+      <div className='row-header'>
+        <h1>
+          {this.getHeaderText() /* Defined by components */}
+        </h1>
+      </div>
+    );
+  }
+};
+
+var UserRow = React.createClass({
+  mixins: [RowMixin],
+
+  // Called by RowMixin.renderHeader()
+  getHeaderText: function() {
+    return this.props.user.fullName;
+  },
+
+  render: function() {
+    return (
+      <div>
+        {this.renderHeader() /* Defined by RowMixin */}
+        <h2>{this.props.user.biography}</h2>
+      </div>
+    )
+  }
+});
+```
+可以改写成：
+```jsx
+function RowHeader(props) {
+  return (
+    <div className='row-header'>
+      <h1>{props.text}</h1>
+    </div>
+  );
+}
+
+function UserRow(props) {
+  return (
+    <div>
+      <RowHeader text={props.user.fullName} />
+      <h2>{props.user.biography}</h2>
+    </div>
+  );
+}
+```
+
+## 提供context
+使用HOC替代mixin
+```jsx
+var RouterMixin = {
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  // The mixin provides a method so that components
+  // don't have to use the context API directly.
+  push: function(path) {
+    this.context.router.push(path)
+  }
+};
+
+var Link = React.createClass({
+  mixins: [RouterMixin],
+
+  handleClick: function(e) {
+    e.stopPropagation();
+
+    // This method is defined in RouterMixin.
+    this.push(this.props.to);
+  },
+
+  render: function() {
+    return (
+      <a onClick={this.handleClick}>
+        {this.props.children}
+      </a>
+    );
+  }
+});
+
+module.exports = Link;
+```
+可以改写成
+```jsx
+function withRouter(WrappedComponent) {
+  return React.createClass({
+    contextTypes: {
+      router: React.PropTypes.object.isRequired
+    },
+
+    render: function() {
+      // The wrapper component reads something from the context
+      // and passes it down as a prop to the wrapped component.
+      var router = this.context.router;
+      return <WrappedComponent {...this.props} router={router} />;
+    }
+  });
+};
+
+var Link = React.createClass({
+  handleClick: function(e) {
+    e.stopPropagation();
+
+    // The wrapped component uses props instead of context.
+    this.props.router.push(this.props.to);
+  },
+
+  render: function() {
+    return (
+      <a onClick={this.handleClick}>
+        {this.props.children}
+      </a>
+    );
+  }
+});
+
+// Don't forget to wrap the component!
+module.exports = withRouter(Link);
+```
+
+## 提供util方法
+放到util.js里再引入
+```jsx
+var ColorMixin = {
+  getLuminance(color) {
+    var c = parseInt(color, 16);
+    var r = (c & 0xFF0000) >> 16;
+    var g = (c & 0x00FF00) >> 8;
+    var b = (c & 0x0000FF);
+    return (0.299 * r + 0.587 * g + 0.114 * b);
+  }
+};
+
+var Button = React.createClass({
+  mixins: [ColorMixin],
+
+  render: function() {
+    var theme = this.getLuminance(this.props.color) > 160 ? 'dark' : 'light';
+    return (
+      <div className={theme}>
+        {this.props.children}
+      </div>
+    )
+  }
+});
+```
+可以改写成：
+```jsx
+var getLuminance = require('../utils/getLuminance');
+
+var Button = React.createClass({
+  render: function() {
+    var theme = getLuminance(this.props.color) > 160 ? 'dark' : 'light';
+    return (
+      <div className={theme}>
+        {this.props.children}
+      </div>
+    )
+  }
+});
+```
