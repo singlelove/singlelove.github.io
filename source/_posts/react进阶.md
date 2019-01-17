@@ -23,6 +23,7 @@ react做diff算法重新渲染的时候，会比较更新前、更新后的key�
 HOC的两种主要实现方式：
 * 属性代理。 高阶组件通过被包裹的React组件来操作props
 * 反向继承。 高阶组件继承于被包裹的React组件
+
 ```jsx
 //属性代理写法
 import React from 'react';
@@ -51,6 +52,7 @@ export default iiHoc;
 
 ## 属性代理
 * 控制props
+
 ```jsx
 import React, { Component } from 'react';
 
@@ -70,6 +72,7 @@ const propsProxyHoc = WrappedComponent => class extends Component {
 export default propsProxyHoc;
 ```
 * 通过refs使用引用(**官方不建议过度依赖refs**)
+
 ```jsx
 import React, { Component } from 'react';
 
@@ -90,6 +93,7 @@ const refHoc = WrappedComponent => class extends Component {
 export default refHoc;
 ```
 * 抽象state，比如把不受控组件变成受控组件
+
 ```jsx
 // 普通组件Login
 import React, { Component } from 'react';
@@ -170,6 +174,7 @@ export default formCreate;
 
 ## 反向继承
 * 渲染劫持
+
 ```jsx
 //hijack-hoc
 import React from 'react';
