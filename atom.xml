@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-15T03:17:19.597Z</updated>
+  <updated>2019-01-17T05:55:12.164Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react性能优化</title>
+    <link href="http://yoursite.com/2019/01/16/react%E8%BF%9B%E9%98%B6/"/>
+    <id>http://yoursite.com/2019/01/16/react进阶/</id>
+    <published>2019-01-16T02:59:19.000Z</published>
+    <updated>2019-01-17T05:55:12.164Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;性能优化&quot;&gt;&lt;a href=&quot;#性能优化&quot; class=&quot;headerlink&quot; title=&quot;性能优化&quot;&gt;&lt;/a&gt;性能优化&lt;/h1&gt;&lt;h2 id=&quot;使用PureComponent替代Component&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="react" scheme="http://yoursite.com/categories/react/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>react中mixin的危害</title>
+    <link href="http://yoursite.com/2019/01/16/react%E4%B8%ADmixin%E7%9A%84%E5%8D%B1%E5%AE%B3/"/>
+    <id>http://yoursite.com/2019/01/16/react中mixin的危害/</id>
+    <published>2019-01-16T02:25:46.000Z</published>
+    <updated>2019-01-17T05:45:58.812Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;隐式依赖&quot;&gt;&lt;a href=&quot;#隐式依赖&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="react" scheme="http://yoursite.com/categories/react/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《深入浅出Node.js》学习笔记</title>
@@ -47,7 +99,7 @@
     <link href="http://yoursite.com/2019/01/04/2019%E4%BA%86%E8%A7%A3%E7%9A%84%E6%96%B0%E5%90%8D%E8%AF%8D%E8%AE%B0%E5%BD%95/"/>
     <id>http://yoursite.com/2019/01/04/2019了解的新名词记录/</id>
     <published>2019-01-04T06:05:00.000Z</published>
-    <updated>2019-01-15T02:08:44.167Z</updated>
+    <updated>2019-01-16T01:44:39.552Z</updated>
     
     <summary type="html">
     
