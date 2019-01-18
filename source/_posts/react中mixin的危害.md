@@ -12,16 +12,14 @@ mixin可能引入不可见的方法、属性、状态，降低了代码的可读
 引入多个mixin可能导致方法、属性、状态的冲突
 
 ## 增加复杂性
-由于 mixins 是侵入式的，它改变了原组件，所以修改 mixins 等于修改原组件，随着需求的增长 mixins 将变得复杂，导致滚雪球的复杂性。
-详见[mixins-cause-snowballing-complexity](https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html#mixins-cause-snowballing-complexity)
+由于 mixins 是侵入式的，它改变了原组件，所以修改 mixins 等于修改原组件，随着需求的增长 mixins 将变得复杂，导致滚雪球的复杂性。详见[mixins-cause-snowballing-complexity](https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html#mixins-cause-snowballing-complexity)
 
 # 解决方案
 ## 性能优化场景
 使用PureComponent替代PureRenderMixin
 
 ## 数据订阅场景
-使用HOC替代mixin
-比如下面的场景：
+使用HOC替代mixin，比如下面的场景：
 ```jsx
 var SubscriptionMixin = {
   getInitialState: function() {
@@ -118,7 +116,6 @@ module.exports = withSubscription(CommentList);
 HOC对比mixin的优势：
 * 支持ES6 classes语法
 * 解决了方法名可能重名导致覆盖的问题
-
 HOC存在的缺陷：
 * 依然不够直观。多个mixin共用时，不知道state是从哪个mixin引入的；而多个HOC共用时，也会存在不知道prop是从
 哪个HOC传入的问题。
@@ -134,12 +131,6 @@ HOC存在的缺陷：
 参考：
 [使用 Render props 吧！](https://juejin.im/post/5a3087746fb9a0450c4963a5)
 [Higher-order components vs Render Props](https://www.richardkotze.com/coding/hoc-vs-render-props-react)
-
-HOC与mixin的区别可参考下图：
-![](/images/article/react中mixin的危害/HOC&mixin.png) 
-高阶组件属于函数式编程(functional programming)思想，对于被包裹的组件时不会感知到高阶组件的存在，
-而高阶组件返回的组件会在原来的组件之上具有功能增强的效果。而Mixin这种混入的模式，会给组件不断增加新的方法和属性，
-组件本身不仅可以感知，甚至需要做相关的处理(例如命名冲突、状态维护)，一旦混入的模块变多时，整个组件就变的难以维护
 
 更多HOC的介绍可阅读我的另一篇文章[react进阶](https://singlelove.github.io/2019/01/16/react%E8%BF%9B%E9%98%B6/#HOC%E4%BD%BF%E7%94%A8)
 

@@ -198,10 +198,8 @@ export default hijackRenderHoc;
 * 控制state
 
 ## 与父组件的区别
-* HOC是统一功能的抽象，强调逻辑与UI分离。因此与UI相关的，建议使用父组件实现；
-与UI不相关的，如校验、权限、请求发送、数据转换这类，通过数据变化间接控制DOM，可以使用HOC抽象
-* HOC的解耦性比父组件更高，参考[此文](https://github.com/sunyongjian/blog/issues/25)应用场景第三点
-关于添加样式和添加处理函数的container的解释
+* HOC是统一功能的抽象，强调逻辑与UI分离。因此与UI相关的，建议使用父组件实现；与UI不相关的，如校验、权限、请求发送、数据转换这类，通过数据变化间接控制DOM，可以使用HOC抽象
+* HOC的解耦性比父组件更高，参考[此文](https://github.com/sunyongjian/blog/issues/25)应用场景第三点关于添加样式和添加处理函数的container的解释
 
 ## 使用上的注意点(约束)
 参考[react进阶之高阶组件](https://github.com/sunyongjian/blog/issues/25)
