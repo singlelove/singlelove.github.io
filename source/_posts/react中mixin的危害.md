@@ -113,13 +113,16 @@ module.exports = withSubscription(CommentList);
 ~~**个人理解**：HOC可以解决mixin上述问题中的后两点。~~
 ~~* 因为多个mixin共同作用时可能相互影响，而HOC是层层包裹的，不会出现名称污染；~~
 ~~* HOC不是侵入式的，没有改动原组件~~
+
 HOC对比mixin的优势：
 * 支持ES6 classes语法
 * 解决了方法名可能重名导致覆盖的问题
+
 HOC存在的缺陷：
 * 依然不够直观。多个mixin共用时，不知道state是从哪个mixin引入的；而多个HOC共用时，也会存在不知道prop是从
 哪个HOC传入的问题。
 * 依然有重名问题。多个mixin共用时，state可能重名；多个HOC共用时，prop可能重名。
+
 同时HOC还引入了新的问题：
 * 需要添加displayName，方便调试，[参考](https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging)
 * 需要做props的透传，[参考](https://reactjs.org/docs/higher-order-components.html#convention-pass-unrelated-props-through-to-the-wrapped-component)
