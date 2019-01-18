@@ -112,14 +112,44 @@ function CommentList(props) {
 // we export the wrapped component right away.
 module.exports = withSubscription(CommentList);
 ```
-**个人理解**：HOC可以解决mixin上述问题中的后两点。
-* 因为多个mixin共同作用时可能相互影响，而HOC是层层包裹的，不会出现名称污染；
-* HOC不是侵入式的，没有改动原组件
+~~**个人理解**：HOC可以解决mixin上述问题中的后两点。~~
+~~* 因为多个mixin共同作用时可能相互影响，而HOC是层层包裹的，不会出现名称污染；~~
+~~* HOC不是侵入式的，没有改动原组件~~
+HOC对比mixin的优势：
+* 支持ES6 classes语法
+* 解决了方法名可能重名导致覆盖的问题
+
+HOC存在的缺陷：
+* 依然不够直观。多个mixin共用时，不知道state是从哪个mixin引入的；而多个HOC共用时，也会存在不知道prop是从
+哪个HOC传入的问题。
+* 依然有重名问题。多个mixin共用时，state可能重名；多个HOC共用时，prop可能重名。
+同时HOC还引入了新的问题：
+* 需要添加displayName，方便调试，[参考](https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging)
+* 需要做props的透传，[参考](https://reactjs.org/docs/higher-order-components.html#convention-pass-unrelated-props-through-to-the-wrapped-component)
+* 需要拷贝静态方法，[参考](https://reactjs.org/docs/higher-order-components.html#static-methods-must-be-copied-over)
+* 是静态构建**关于这点还不是很理解**
+* 包裹多个HOC时由于会产生无用组件，因此更容易造成"包装地狱"，如图：
+![](/images/article/react中mixin的危害/wrapper hell.png) 
+
+参考：
+[使用 Render props 吧！](https://juejin.im/post/5a3087746fb9a0450c4963a5)
+[Higher-order components vs Render Props](https://www.richardkotze.com/coding/hoc-vs-render-props-react)
+
 HOC与mixin的区别可参考下图：
 ![](/images/article/react中mixin的危害/HOC&mixin.png) 
 高阶组件属于函数式编程(functional programming)思想，对于被包裹的组件时不会感知到高阶组件的存在，
 而高阶组件返回的组件会在原来的组件之上具有功能增强的效果。而Mixin这种混入的模式，会给组件不断增加新的方法和属性，
 组件本身不仅可以感知，甚至需要做相关的处理(例如命名冲突、状态维护)，一旦混入的模块变多时，整个组件就变的难以维护
+
+更多HOC的介绍可阅读我的另一篇文章[react进阶](https://singlelove.github.io/2019/01/16/react%E8%BF%9B%E9%98%B6/#HOC%E4%BD%BF%E7%94%A8)
+
+### 扩展阅读：
+render props相比HOC的优势，[参考](https://www.richardkotze.com/coding/hoc-vs-render-props-react)
+* 依赖更明确，知道state是由谁提供的
+* 不存在方法或者state或者props的冲突
+* 不需要额外处理静态方法，添加displayName，传递props等处理
+
+除了写法上不如HOC优雅，特别是多个组合使用时会变成形似回调地狱的代码，render props似乎可以完全替代HOC了，更推荐使用render props。
 
 ## 共用渲染
 使用组件的形式替代
