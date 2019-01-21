@@ -143,7 +143,31 @@ render props相比HOC的优势，[参考](https://www.richardkotze.com/coding/ho
 * 不存在方法或者state或者props的冲突
 * 不需要额外处理静态方法，添加displayName，传递props等处理
 
-除了写法上不如HOC优雅，特别是多个组合使用时会变成形似回调地狱的代码，render props似乎可以完全替代HOC了，更推荐使用render props。
+不过render props同样带来了问题：
+* shouldComponentUpdate/PureComponent使用时需要注意，需要采用[如下方式](https://reactjs.org/docs/render-props.html#be-careful-when-using-render-props-with-reactpurecomponent)定义render props，否则会失效引起冗余渲染
+* 多个嵌套时会造成“callback hell”的代码，很不优雅，如下图
+
+```jsx
+// render props的方式
+class RenderProps extends React.Component {
+  render() {
+    return (
+      <WithHeader>
+        {header => (
+          <WithMouse>
+          {mouse => (
+            <HOCContainer />
+          )}          
+        </WithMouse>
+        )}
+      </WithHeader>
+    )
+  }
+}
+
+// HOC的方式
+const HOCComponent = withHeader(withMouse(HOCContainer));
+```
 
 ## 共用渲染
 使用组件的形式替代
