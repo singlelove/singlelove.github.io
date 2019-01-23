@@ -309,6 +309,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/react中创建组件的几种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Beijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOLACE ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/22/react中创建组件的几种方式/" itemprop="url">react中创建组件的几种方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T11:10:06+08:00">
+                2019-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/22/react中创建组件的几种方式/" class="leancloud_visitors" data-flag-title="react中创建组件的几种方式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="三种创建方式"><a href="#三种创建方式" class="headerlink" title="三种创建方式"></a>三种创建方式</h1><h2 id="createClass"><a href="#createClass" class="headerlink" title="createClass"></a>createClass</h2><p>这是react在ES5时期使用的创建组建的方式<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">"react"</span>);</span><br><span class="line"><span class="keyword">var</span> Greeting = React.createClass(&#123;</span><br><span class="line">  </span><br><span class="line">  propTypes: &#123;</span><br><span class="line">    name: React.PropTypes.string <span class="comment">//属性校验</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  getDefaultProps: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      name: <span class="string">'Mary'</span> <span class="comment">//默认属性值</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">count</span>: <span class="keyword">this</span>.props.initialCount&#125;; <span class="comment">//初始化state</span></span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  handleClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//用户点击事件的处理函数</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">module</span>.exports = Greeting;</span><br></pre></td></tr></table></figure></p>
+<p>在createClass中，React对属性中的所有函数都进行了this绑定，也就是如上面的hanleClick其实相当于handleClick.bind(this) 。</p>
+<h2 id="class-component"><a href="#class-component" class="headerlink" title="class component"></a>class component</h2><p>随着ES6的到来，带来了类和继承语法级别的支持，所以在ES6中，React推荐使用class的方式创建组件<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeting</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">count</span>: props.initialCount&#125;;</span><br><span class="line">    <span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//static defaultProps = &#123;</span></span><br><span class="line">  <span class="comment">//  name: 'Mary'  //定义defaultprops的另一种方式</span></span><br><span class="line">  <span class="comment">//&#125;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//static propTypes = &#123;</span></span><br><span class="line">    <span class="comment">//name: React.PropTypes.string</span></span><br><span class="line">  <span class="comment">//&#125;</span></span><br><span class="line">  </span><br><span class="line">  handleClick() &#123;</span><br><span class="line">    <span class="comment">//点击事件的处理函数</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//handleClick = () =&gt; &#123;</span></span><br><span class="line">  <span class="comment">//&#125;</span></span><br><span class="line">  </span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Greeting.propTypes = &#123;</span><br><span class="line">  name: React.PropTypes.string</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Greeting.defaultProps = &#123;</span><br><span class="line">  name: <span class="string">'Mary'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Greating;</span><br></pre></td></tr></table></figure></p>
+<p>而在面向对象的语法中类的属性通常被称作静态(static)属性，这也是为什么props还可以像上面注释掉的方式来定义。<br>用这种方式创建组件时，React并没有对内部的函数，进行this绑定，所以如果你想让函数在回调中保持正确的this，就要手动对需要的函数进行this绑定，有两种方式：</p>
+<ul>
+<li>构造函数中使用this.handleClick = this.handleClick.bind(this);</li>
+<li>函数声明时采用箭头函数，如注释中的handleClick = () =&gt; { return …}</li>
+</ul>
+<h2 id="functional-component"><a href="#functional-component" class="headerlink" title="functional component"></a>functional component</h2><p>上面我们提到的创建组件的方式，都是用来创建包含状态和用户交互的复杂组件，当组件本身只是用来展示，所有数据都是通过props传入的时候，我们便可以使用Stateless Functional Component来快速创建组件。例如下面代码所示:<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> Button = (&#123;</span><br><span class="line">  day,</span><br><span class="line">  increment</span><br><span class="line">&#125;) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;increment&#125;&gt;Today is &#123;day&#125;&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Button.propTypes = &#123;</span><br><span class="line">  day: PropTypes.string.isRequired,</span><br><span class="line">  increment: PropTypes.func.isRequired,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种组件，没有自身的状态，相同的props输入，必然会获得完全相同的组件展示。因为不需要关心组件的一些生命周期函数和渲染的钩子，所以不用继承自Component显得更简洁。</p>
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><p>class component与createClass本质上没什么区别，只是一个支持ES6，一个不支持<br>functional component与class component相比，主要区别在于function component是无状态的，也没有生命周期函数，但是带来了以下几个优势：</p>
+<ul>
+<li>没有了this的困扰，在class component中事件回调经常需要通过bind或者箭头函数绑定this</li>
+<li>强制视图、逻辑分离，耦合更低。functional component是无状态组件，适合用于表现类组件的创建。</li>
+<li>可读性、可测试性都得到提高。因为functional component是纯函数，指定input即可确定output</li>
+<li>潜在的性能提升。虽然目前functional component相比class component并没有性能提升，但是React官方计划在未来为functional component做优化，避免不必要的检查和内存分配，比如<a href="https://medium.com/missive-app/45-faster-react-functional-components-now-3509a668e69f" target="_blank" rel="noopener">这篇文章</a>指出，通过合理的优化，functional component可以实现45%的性能提升</li>
+</ul>
+<p>很多时候我们创建了functional component，但是后来又需要为组件添加一些状态或者context或者需要调用生命周期函数，此时不必把functional component改写成class component，使用<a href="https://reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener">react hooks</a>或者<a href="https://github.com/acdlite/recompose" target="_blank" rel="noopener">recompose</a>即可。<br>这里更推荐使用官方的react hooks，它不仅为functional component带来了使用状态、context、生命周期函数的能力，使其可以完成class component的功能，还避免了“包装地狱”的引入</p>
+<blockquote>
+<p>“包装地狱”是目前react中很常见的一个问题，在使用context或者HOC或者render props的时候因为引入了无用的标签，很容易就产生了很深的标签嵌套。</p>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://segmentfault.com/a/1190000008402834" target="_blank" rel="noopener">谈一谈创建React Component的几种方式</a><br><a href="https://programmingwithmosh.com/react/react-functional-components/" target="_blank" rel="noopener">React Functional or Class Components: Everything you need to know</a><br><a href="http://taobaofed.org/blog/2018/11/27/hooks-and-function-component/" target="_blank" rel="noopener">前端架构杂思录：议 Function Component 与 Hooks</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/react进阶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -643,7 +817,11 @@
 <p>更多HOC的介绍可阅读我的另一篇文章<a href="https://singlelove.github.io/2019/01/16/react%E8%BF%9B%E9%98%B6/#HOC%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">react进阶</a></p>
 <h3 id="扩展阅读："><a href="#扩展阅读：" class="headerlink" title="扩展阅读："></a>扩展阅读：</h3><p>render props相比HOC的优势，<a href="https://www.richardkotze.com/coding/hoc-vs-render-props-react" target="_blank" rel="noopener">参考</a></p>
 <ul>
-<li>依赖更明确，知道state是由谁提供的</li>
+<li><p>可以获得组件运行时的state和props，这一点HOC无法做到(<strong>虽然还没想到具体的应用场景，不过我觉得这是render props相比HOC最大的优势</strong>)</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RenderProps</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;...&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;WithMouse &#123;..this.state&#125; &#123;...this.props&#125;&gt;    <span class="comment">//通过这种方式可以获得组件运行时的state和props</span></span><br><span class="line">        &#123;mouse =&gt; (</span><br><span class="line">          &lt;WrapperComponent /&gt;</span><br><span class="line">        )&#125;          </span><br><span class="line">    &lt;<span class="regexp">/WithMouse&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖更明确，知道state是由谁提供的</p>
+</li>
 <li>不存在方法或者state或者props的冲突</li>
 <li>不需要额外处理静态方法，添加displayName，传递props等处理</li>
 </ul>
@@ -652,7 +830,7 @@
 <li>shouldComponentUpdate/PureComponent使用时需要注意，需要采用<a href="https://reactjs.org/docs/render-props.html#be-careful-when-using-render-props-with-reactpurecomponent" target="_blank" rel="noopener">如下方式</a>定义render props，否则会失效引起冗余渲染</li>
 <li>多个嵌套时会造成“callback hell”的代码，很不优雅，如下图</li>
 </ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render props的方式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RenderProps</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;WithHeader&gt;</span><br><span class="line">        &#123;header =&gt; (</span><br><span class="line">          &lt;WithMouse&gt;</span><br><span class="line">          &#123;mouse =&gt; (</span><br><span class="line">            &lt;HOCContainer /&gt;</span><br><span class="line">          )&#125;          </span><br><span class="line">        &lt;<span class="regexp">/WithMouse&gt;</span></span><br><span class="line"><span class="regexp">        )&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>WithHeader&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// HOC的方式</span></span><br><span class="line"><span class="keyword">const</span> HOCComponent = withHeader(withMouse(HOCContainer));</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render props的方式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RenderPropsComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;WithHeader&gt;</span><br><span class="line">        &#123;header =&gt; (</span><br><span class="line">          &lt;WithMouse&gt;</span><br><span class="line">          &#123;mouse =&gt; (</span><br><span class="line">            &lt;WrapperComponent /&gt;</span><br><span class="line">          )&#125;          </span><br><span class="line">        &lt;<span class="regexp">/WithMouse&gt;</span></span><br><span class="line"><span class="regexp">        )&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>WithHeader&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// HOC的方式</span></span><br><span class="line"><span class="keyword">const</span> HOCComponent = withHeader(withMouse(WrapperComponent));</span><br></pre></td></tr></table></figure>
 <h2 id="共用渲染"><a href="#共用渲染" class="headerlink" title="共用渲染"></a>共用渲染</h2><p>使用组件的形式替代<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> RowMixin = &#123;</span><br><span class="line">  <span class="comment">// Called by components from render()</span></span><br><span class="line">  renderHeader: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">'row-header'</span>&gt;</span><br><span class="line">        &lt;h1&gt;</span><br><span class="line">          &#123;<span class="keyword">this</span>.getHeaderText() <span class="comment">/* Defined by components */</span>&#125;</span><br><span class="line">        &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> UserRow = React.createClass(&#123;</span><br><span class="line">  mixins: [RowMixin],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Called by RowMixin.renderHeader()</span></span><br><span class="line">  getHeaderText: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.props.user.fullName;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.renderHeader() <span class="comment">/* Defined by RowMixin */</span>&#125;</span><br><span class="line">        &lt;h2&gt;&#123;<span class="keyword">this</span>.props.user.biography&#125;&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>可以改写成：<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RowHeader</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">'row-header'</span>&gt;</span><br><span class="line">      &lt;h1&gt;&#123;props.text&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserRow</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;RowHeader text=&#123;props.user.fullName&#125; /&gt;</span><br><span class="line">      &lt;h2&gt;&#123;props.user.biography&#125;&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="提供context"><a href="#提供context" class="headerlink" title="提供context"></a>提供context</h2><p>使用HOC替代mixin<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> RouterMixin = &#123;</span><br><span class="line">  contextTypes: &#123;</span><br><span class="line">    router: React.PropTypes.object.isRequired</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The mixin provides a method so that components</span></span><br><span class="line">  <span class="comment">// don't have to use the context API directly.</span></span><br><span class="line">  push: <span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.context.router.push(path)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Link = React.createClass(&#123;</span><br><span class="line">  mixins: [RouterMixin],</span><br><span class="line"></span><br><span class="line">  handleClick: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.stopPropagation();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This method is defined in RouterMixin.</span></span><br><span class="line">    <span class="keyword">this</span>.push(<span class="keyword">this</span>.props.to);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;a onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.props.children&#125;</span><br><span class="line">      &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">module.exports = Link;</span></span><br></pre></td></tr></table></figure></p>
@@ -2070,170 +2248,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang Beijin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SOLACE ZONE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" itemprop="url">工作采坑记录：jquery1.12版本top计算的坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-17T16:32:03+08:00">
-                2018-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jquery/" itemprop="url" rel="index">
-                    <span itemprop="name">jquery</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" class="leancloud_visitors" data-flag-title="工作采坑记录：jquery1.12版本top计算的坑">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用<a href="https://github.com/harvesthq/chosen" target="_blank" rel="noopener">jquery chosen</a>插件的时候遇到了个奇怪的问题，在用鼠标滚轮滑动下拉菜单过程中，会突然跳转到下拉菜单最底部，往上回滚也无济于事，会再次跳转到底部，但是看了官网插件并无此问题，于是开始debug。</p>
-<h1 id="scroll事件覆盖"><a href="#scroll事件覆盖" class="headerlink" title="scroll事件覆盖"></a>scroll事件覆盖</h1><p>首先怀疑是本地代码对scroll事件进行了覆盖导致的冲突，但是检查完之后发现并无异常行为。</p>
-<h1 id="插件highlight事件断点调试"><a href="#插件highlight事件断点调试" class="headerlink" title="插件highlight事件断点调试"></a>插件highlight事件断点调试</h1><p>仔细观察bug后发现滚动时行为正常，但是当鼠标移到下拉菜单上，高亮选中项时，就会发生异常跳转，于是怀疑是插件highlight操作时出现异常。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Chosen.prototype.result_do_highlight = <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> high_bottom, high_top, maxHeight, visible_bottom, visible_top;</span><br><span class="line">  <span class="keyword">if</span> (el.length) &#123;</span><br><span class="line">    <span class="keyword">this</span>.result_clear_highlight();</span><br><span class="line">    <span class="keyword">this</span>.result_highlight = el;</span><br><span class="line">    <span class="keyword">this</span>.result_highlight.addClass(<span class="string">"highlighted"</span>);</span><br><span class="line">    maxHeight = <span class="built_in">parseInt</span>(<span class="keyword">this</span>.search_results.css(<span class="string">"maxHeight"</span>), <span class="number">10</span>);</span><br><span class="line">    visible_top = <span class="keyword">this</span>.search_results.scrollTop();</span><br><span class="line">    visible_bottom = maxHeight + visible_top;</span><br><span class="line">    high_top = <span class="keyword">this</span>.result_highlight.position().top + <span class="keyword">this</span>.search_results.scrollTop();</span><br><span class="line">    high_bottom = high_top + <span class="keyword">this</span>.result_highlight.outerHeight();</span><br><span class="line">    <span class="keyword">if</span> (high_bottom &gt;= visible_bottom) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.search_results.scrollTop((high_bottom - maxHeight) &gt; <span class="number">0</span> ? high_bottom - maxHeight : <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (high_top &lt; visible_top) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.search_results.scrollTop(high_top);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码是插件执行highlight的部分，对比官网例子之后发现当下拉菜单往下滚动时，本地<strong><em>this.result_highlight.position().top</em></strong>的值异常大，官网例子的对应参数取值在[0, 240]之间，也就是下拉菜单的可视区域的最大高度，于是确定是<strong><em>this.result_highlight.position().top</em></strong>的计算有问题。</p>
-<h1 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h1><p>为什么本地<strong><em>this.result_highlight.position().top</em></strong>的值会出错呢，<a href="https://api.jquery.com/position/" target="_blank" rel="noopener">jquery</a>官网说明比较简略，position计算的是当前元素与父元素的相对距离。我首先想到的是会不会是本地的css样式影响了position的计算，于是把插件移到了最顶端，注释掉了几乎所有css，只保留了插件的样式，但是bug依然存在。</p>
-<h1 id="issues里找答案"><a href="#issues里找答案" class="headerlink" title="issues里找答案"></a>issues里找答案</h1><p>万般debug无果，我又把目光投向了插件在github上的issues，看是否有其他人遇到同样的问题，果然找到了一个<a href="https://github.com/harvesthq/chosen/issues/2506" target="_blank" rel="noopener">issue</a>，也找到了解决方案<br><img src="/images/article/工作采坑记录：jquery1.12版本top计算的坑/workaround.png" alt=""><br>试了一下，果然解决了。那为什么会产生这个问题呢，继续看issues下的评论，发现了这是jquery1.12中的一个<a href="https://github.com/jquery/jquery/commit/49833f7795d665ff1d543c4f71f29fca95b567e9" target="_blank" rel="noopener">bug</a>。在jquery1.12和2.2中top的计算出现了bug，把scrollTop的值也算进去了。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总结了下，在这个bug的定位解决中还是走了不少弯路的。如果一开始就注意到官网中要求的插件依赖jQuery support: 1.7+，就能更早的定位到问题。总结了下插件bug的定位过程，感觉按照下面的过程去定位会比较好：</p>
-<ul>
-<li>1、看本地是否满足了插件依赖的版本要求</li>
-<li>2、看issues里是否有别人遇到了同样的问题</li>
-<li>3、最后再断点插件相关部分的代码自己找原因</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2288,7 +2302,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
