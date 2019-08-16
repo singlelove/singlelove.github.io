@@ -139,6 +139,24 @@ HOC存在的缺陷：
 
 ### 扩展阅读：
 render props相比HOC的优势，[参考](https://www.richardkotze.com/coding/hoc-vs-render-props-react)
+* 可以获得组件运行时的state和props，这一点HOC无法做到(**虽然还没想到具体的应用场景，不过我觉得这是render props相比HOC最大的优势**)
+```jsx
+class RenderProps extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {...};
+  }
+  render() {
+    return (
+      <WithMouse {..this.state} {...this.props}>    //通过这种方式可以获得组件运行时的state和props
+        {mouse => (
+          <WrapperComponent />
+        )}          
+    </WithMouse>
+    )
+  }
+}
+```
 * 依赖更明确，知道state是由谁提供的
 * 不存在方法或者state或者props的冲突
 * 不需要额外处理静态方法，添加displayName，传递props等处理
@@ -149,14 +167,14 @@ render props相比HOC的优势，[参考](https://www.richardkotze.com/coding/ho
 
 ```jsx
 // render props的方式
-class RenderProps extends React.Component {
+class RenderPropsComponent extends React.Component {
   render() {
     return (
       <WithHeader>
         {header => (
           <WithMouse>
           {mouse => (
-            <HOCContainer />
+            <WrapperComponent />
           )}          
         </WithMouse>
         )}
@@ -166,7 +184,7 @@ class RenderProps extends React.Component {
 }
 
 // HOC的方式
-const HOCComponent = withHeader(withMouse(HOCContainer));
+const HOCComponent = withHeader(withMouse(WrapperComponent));
 ```
 
 ## 共用渲染
