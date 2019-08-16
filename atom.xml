@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-22T09:01:16.099Z</updated>
+  <updated>2019-08-16T09:04:00.560Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,109 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&#39;oauth相关&#39;</title>
+    <link href="http://yoursite.com/2019/08/16/oauth%E7%9B%B8%E5%85%B3/"/>
+    <id>http://yoursite.com/2019/08/16/oauth相关/</id>
+    <published>2019-08-16T02:39:51.000Z</published>
+    <updated>2019-08-16T09:04:00.560Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;OpenId：只提供认证&lt;/li&gt;
+&lt;li&gt;OAuth：认证+授权&lt;/li&gt;
+&lt;li&gt;SSO：是多系统之间登录的一种解决方案，CAS和OAuth都可以是SSO的实现方式，但OAuth初衷是用于第三方认证和授权，并非用于SSO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>&#39;分布式设计&#39;</title>
+    <link href="http://yoursite.com/2019/07/26/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://yoursite.com/2019/07/26/分布式设计/</id>
+    <published>2019-07-26T02:17:09.000Z</published>
+    <updated>2019-07-26T02:22:30.452Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;可扩展性设计&quot;&gt;&lt;a href=&quot;#可扩展性设计&quot; class=&quot;headerlink&quot; title=&quot;可扩展性设计&quot;&gt;&lt;/a&gt;可扩展性设计&lt;/h1&gt;&lt;h2 id=&quot;数据切分&quot;&gt;&lt;a href=&quot;#数据切分&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="新知识" scheme="http://yoursite.com/categories/%E6%96%B0%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中间件简介</title>
+    <link href="http://yoursite.com/2019/07/22/%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2019/07/22/中间件简介/</id>
+    <published>2019-07-22T09:25:15.000Z</published>
+    <updated>2019-07-25T09:16:28.645Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;nginx&quot;&gt;&lt;a href=&quot;#nginx&quot; class=&quot;headerlink&quot; title=&quot;nginx&quot;&gt;&lt;/a&gt;nginx&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="新知识" scheme="http://yoursite.com/categories/%E6%96%B0%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript迁移到typescript过程记录</title>
+    <link href="http://yoursite.com/2019/07/08/javascript%E8%BF%81%E7%A7%BB%E5%88%B0typescript%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2019/07/08/javascript迁移到typescript过程记录/</id>
+    <published>2019-07-08T07:39:13.000Z</published>
+    <updated>2019-07-10T08:31:25.615Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="问题记录" scheme="http://yoursite.com/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>react中创建组件的几种方式</title>
@@ -179,7 +282,7 @@
     <link href="http://yoursite.com/2018/11/20/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2018/11/20/跨域问题整理/</id>
     <published>2018-11-20T01:38:08.000Z</published>
-    <updated>2019-01-22T02:04:48.974Z</updated>
+    <updated>2019-02-01T08:54:40.241Z</updated>
     
     <summary type="html">
     

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="学习," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,28 +81,17 @@
 
 
 
-<meta name="description" content="前言最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。 优化当时构建的时间如图所示，平均为40s左右。要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：1$ webpack --profile --json &amp;gt; stats.json  刚开始遇到了一个报错，Output">
-<meta name="keywords" content="学习">
+<meta name="description" content="OpenId：只提供认证 OAuth：认证+授权 SSO：是多系统之间登录的一种解决方案，CAS和OAuth都可以是SSO的实现方式，但OAuth初衷是用于第三方认证和授权，并非用于SSO  OAuth授权码模式(authorization code)1) 用户访问客户端，客户端重定向到认证服务器，携带redirection_uri2) 用户选择是否给客户端授权3) 授权后，认证服务器重定向到客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsp + react项目webpack构建优化记录">
-<meta property="og:url" content="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/index.html">
+<meta property="og:title" content="&#39;oauth相关&#39;">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/oauth相关/index.html">
 <meta property="og:site_name" content="SOLACE ZONE">
-<meta property="og:description" content="前言最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。 优化当时构建的时间如图所示，平均为40s左右。要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：1$ webpack --profile --json &amp;gt; stats.json  刚开始遇到了一个报错，Output">
+<meta property="og:description" content="OpenId：只提供认证 OAuth：认证+授权 SSO：是多系统之间登录的一种解决方案，CAS和OAuth都可以是SSO的实现方式，但OAuth初衷是用于第三方认证和授权，并非用于SSO  OAuth授权码模式(authorization code)1) 用户访问客户端，客户端重定向到认证服务器，携带redirection_uri2) 用户选择是否给客户端授权3) 授权后，认证服务器重定向到客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/before.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/multiCompile.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/afterCombine.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/hints.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/beforeSplit.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/afterSplit.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/longModuleBuildChains.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/prefetchPlugin.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/prefetchDefaultUsed.png">
-<meta property="og:updated_time" content="2019-01-15T03:24:15.480Z">
+<meta property="og:updated_time" content="2019-08-16T09:04:00.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsp + react项目webpack构建优化记录">
-<meta name="twitter:description" content="前言最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。 优化当时构建的时间如图所示，平均为40s左右。要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：1$ webpack --profile --json &amp;gt; stats.json  刚开始遇到了一个报错，Output">
-<meta name="twitter:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/before.png">
+<meta name="twitter:title" content="&#39;oauth相关&#39;">
+<meta name="twitter:description" content="OpenId：只提供认证 OAuth：认证+授权 SSO：是多系统之间登录的一种解决方案，CAS和OAuth都可以是SSO的实现方式，但OAuth初衷是用于第三方认证和授权，并非用于SSO  OAuth授权码模式(authorization code)1) 用户访问客户端，客户端重定向到认证服务器，携带redirection_uri2) 用户选择是否给客户端授权3) 授权后，认证服务器重定向到客">
 
 
 
@@ -132,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/08/16/oauth相关/"/>
 
 
 
 
 
-  <title>jsp + react项目webpack构建优化记录 | SOLACE ZONE</title>
+  <title>'oauth相关' | SOLACE ZONE</title>
   
 
 
@@ -323,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/oauth相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Beijin">
@@ -340,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jsp + react项目webpack构建优化记录</h1>
+          <h1 class="post-title" itemprop="name headline">'oauth相关'</h1>
         
 
         <div class="post-meta">
@@ -352,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T16:23:23+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-16T10:39:51+08:00">
+                2019-08-16
               </time>
             
 
@@ -363,28 +352,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/构建/" itemprop="url" rel="index">
-                    <span itemprop="name">构建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -392,7 +359,7 @@
 
           
           
-             <span id="/2018/03/08/jsp+react项目webpack构建优化记录/" class="leancloud_visitors" data-flag-title="jsp + react项目webpack构建优化记录">
+             <span id="/2019/08/16/oauth相关/" class="leancloud_visitors" data-flag-title="'oauth相关'">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,23 +390,26 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。</p>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>当时构建的时间如图所示，平均为40s左右。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/before.png" alt=""><br>要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --profile --json &gt; stats.json</span><br></pre></td></tr></table></figure></p>
+        <ul>
+<li>OpenId：只提供认证</li>
+<li>OAuth：认证+授权</li>
+<li>SSO：是多系统之间登录的一种解决方案，CAS和OAuth都可以是SSO的实现方式，但OAuth初衷是用于第三方认证和授权，并非用于SSO</li>
+</ul>
+<h1 id="OAuth"><a href="#OAuth" class="headerlink" title="OAuth"></a>OAuth</h1><h2 id="授权码模式-authorization-code"><a href="#授权码模式-authorization-code" class="headerlink" title="授权码模式(authorization code)"></a>授权码模式(authorization code)</h2><p>1) 用户访问客户端，客户端重定向到认证服务器，携带redirection_uri<br>2) 用户选择是否给客户端授权<br>3) 授权后，认证服务器重定向到客户端指定的redirection_uri，附上code授权码<br>4) 客户端收到code，附上redirection_uri，由客户端的后台服务器向认证服务器申请令牌(token)，对用户(浏览器端)不可见，避免token泄露<br>5) 认证服务器核对授权码和redirection_uri，确认无误后向客户端发送访问令牌（access token）和更新令牌（refresh token）<br>6) 客户端携带access_token向资源服务器请求用户信息资源<br>7) 资源服务器验证access_token合法后返回用户信息给客户端</p>
+<p>1)步骤携带参数<br>response_type：表示授权类型，必选项，此处的值固定为”code”<br>client_id：表示客户端的ID，必选项<br>redirection_uri：表示重定向URI，可选项<br>scope：表示申请的权限范围，可选项<br>state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</p>
 <blockquote>
-<p>刚开始遇到了一个报错，<strong><em>Output filename not configured</em></strong>，排查之后发现是webpack.config.js文件中的output属性使用了chunkFilename造成的，改回filename的设置即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">  chunkFilename: <span class="string">'[name].bundle.js'</span>, <span class="comment">// 使用这个属性会造成stats.json生成失败，具体原因未知</span></span><br><span class="line">  path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>state参数可以避免CSRF攻击，防止攻击者骗受害者绑定攻击者的账号，参考<a href="https://www.chrisyue.com/security-issue-about-oauth-2-0-you-should-know.html" target="_blank" rel="noopener">关于 OAuth2.0 安全性你应该要知道的一些事</a></p>
 </blockquote>
-<p>然后将得到的结果放到webpack的<a href="https://github.com/webpack/analyse" target="_blank" rel="noopener">官方分析工具</a>进行分析。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/multiCompile.png" alt=""><br>当我把项目的stats.json输出文件上传之后，看到了上图，正常来说上传之后会直接显示bundle分析，但是此时显示多个compile选择，可见这份json文件中包含了多次构建，于是我去查看了webpack的config文件，看到了下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getConfg</span>(<span class="params">resourse, env</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> resources = resourse,</span><br><span class="line">        cfgArr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> resources) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.hasOwnProperty.call(resources, key))&#123;</span><br><span class="line">            <span class="keyword">var</span> obj = getBaseCfg(env);</span><br><span class="line">            obj.entry = &#123;&#125;;</span><br><span class="line">            obj.entry[path.basename(key, <span class="string">'.jsx'</span>)] = key;</span><br><span class="line">            obj.output = &#123;&#125;;</span><br><span class="line">            obj.output.path = resources[key];</span><br><span class="line">            obj.output.filename = <span class="string">'[name].js'</span>;</span><br><span class="line">            cfgArr.push(obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cfgArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看到返回的cfgArr是个数组，因此执行了多次webpack构建，降低了性能，可以通过多入口的方式，将这些构建合并成一个，来提高构建速度，修改如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getConfg</span>(<span class="params">resourse, env</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> resources = resourse,</span><br><span class="line">        cfg = getBaseCfg(env);</span><br><span class="line">    cfg.entry = &#123;&#125;;</span><br><span class="line">    cfg.output = &#123;</span><br><span class="line">        path: path.resolve(__dirname, buildDir),</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    resources.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">filePath</span>) </span>&#123;</span><br><span class="line">        cfg.entry[path.basename(filePath, <span class="string">'.jsx'</span>)] = filePath;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cfg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此外，由于这些模块之间存在公共部分，可以通过CommonsChunkPlugin提取出来，来避免打包时的代码冗余。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">        name: <span class="string">"common"</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>以下是优化后的构建时间，缩短了将近一半。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/afterCombine.png" alt=""> </p>
-<p>好，接下来继续进行分析，修改之后，重新生成一下stats.json，这次再上传到官方的分析工具之后，这次直接就展示了输出结果，我们先点击上方导航栏的hints，就能看到工具提供的优化建议。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/hints.png" alt=""><br>如图，看到的是可以提取的公共模块，其中有个<code>address.json</code>文件，体积高达1mb，被两个module所引用，造成两个module体积都较大，可以考虑打包成单独的chunk，动态加载。<br>按照建议，参考<a href="https://doc.webpack-china.org/api/module-methods/#import-" target="_blank" rel="noopener">官方文档</a>使用import方式动态加载。</p>
+<p>3)步骤携带参数<br>code：表示授权码，必选项。该码的有效期应该很短，通常设为10分钟，客户端只能使用该码一次，否则会被授权服务器拒绝。该码与客户端ID和重定向URI，是一一对应关系。<br>state：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。</p>
 <blockquote>
-<p>工具建议中所用的ensure方法已被import取代<br>注意：此时需要修改webpack.config.js文件中的output属性，把filename改成chunkFilename，否则会出现分离出来的chunk文件名是数字的情况。</p>
+<p>为什么使用code比access_token安全，因为code有效期短，只能使用一次，一旦多次使用，就会令原本换到的access_token失效</p>
 </blockquote>
-<p>分离出address文件之后，可以看到原本引用了该文件的applyInfo和basicInfoList体积都减小了很多，不过经测试对构建时间并没有什么影响。而且因为使用到这个文件的两个模块其实也是一加载的时候就需要使用address，并不存在需要时再加载，因此对页面的性能也没什么提高……<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/beforeSplit.png" alt=""><br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/afterSplit.png" alt=""> </p>
-<p>总之，继续来看下面的hints吧。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/longModuleBuildChains.png" alt=""><br>这个hint大意是有些模块的依赖路径太长，建议提前告知webpack。<a href="https://webpack.js.org/plugins/prefetch-plugin/" target="_blank" rel="noopener">Prefetch</a>是webpack的一个插件，但是官方文档的介绍比较简略，看不出这个插件是如何作用提高性能的。我按照文档介绍的方式尝试prefetch了几个模块，但是构建时间并没有减少，也并没有新的chunk输出。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/dom-align/es/index.js'</span>),</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/lodash/_mapCacheClear.js'</span>),</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/lodash/_MapCache.js'</span>),</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/async-validator/es/rule/index.js'</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>在网上找到webpack作者sokra的一段解释，完整的issues见<a href="https://github.com/webpack/webpack/issues/1566" target="_blank" rel="noopener">这里</a><br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/prefetchPlugin.png" alt=""><br>大意是过长的chains可能导致webpack为了等待I/O而导致性能受影响，而prefetch可以避免这种情况发生。结合前面加了prefetch之后构建时间并没有减少的情况，我觉得prefetch应该只有在I/O成为性能瓶颈的情况下，才会提升构建性能。<br>此外，在另一个<a href="https://github.com/webpack/webpack.js.org/issues/126" target="_blank" rel="noopener">issuse</a>里，webpack成员TheLarkInn提到prefetch现在在webpack中已经是默认配置了，因此没必要特意做配置了。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/prefetchDefaultUsed.png" alt=""> </p>
+<p>4)步骤携带参数<br>grant_type：表示使用的授权模式，必选项，此处的值固定为”authorization_code”。<br>code：表示上一步获得的授权码，必选项。<br>redirection_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致(<strong>避免redirection_uri篡改攻击，同时应该要求第三方服务注册时，提供redirection_uri</strong>)<br>client_id：表示客户端ID，必选项。</p>
+<blockquote>
+<p>建议增加secret字段，否则一旦第三方网站被DNS污染，导致攻击者拿到了code，就可以直接通过code换取access_token了，<br>因为client_id是公开的(在步骤1中就可以看到)，参考<a href="https://www.chrisyue.com/security-issue-about-oauth-2-0-you-should-know.html" target="_blank" rel="noopener">关于 OAuth2.0 安全性你应该要知道的一些事</a><br>一文code与secret部分章节。</p>
+</blockquote>
+<p>5)步骤携带参数<br>access_token：表示访问令牌，必选项。<br>token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。<br>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。<br>refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。<br>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</p>
+<p>流程参考<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">阮一峰的理解OAuth 2.0</a><br>安全性问题参考<a href="http://blog.abandonzhang.me/2017/11/12/OAuth-2-0-Authorization-Framework/#%E5%AE%89%E5%85%A8%E6%80%A7%E8%80%83%E8%99%91%EF%BC%88Security-Considerations%EF%BC%89" target="_blank" rel="noopener">The OAuth 2.0 Authorization Framework 入门</a></p>
 
       
     </div>
@@ -484,7 +454,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/" title="jsp + react项目webpack构建优化记录">http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/</a>
+    <a href="http://yoursite.com/2019/08/16/oauth相关/" title="'oauth相关'">http://yoursite.com/2019/08/16/oauth相关/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -496,12 +466,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/学习/" rel="tag"># 学习</a>
-          
-        </div>
       
 
       
@@ -527,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/angular学习笔记/" rel="next" title="angular学习笔记">
-                <i class="fa fa-chevron-left"></i> angular学习笔记
+              <a href="/2019/07/26/分布式设计/" rel="next" title="'分布式设计'">
+                <i class="fa fa-chevron-left"></i> '分布式设计'
               </a>
             
           </div>
@@ -536,10 +500,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" rel="prev" title="工作采坑记录：jquery1.12版本top计算的坑">
-                工作采坑记录：jquery1.12版本top计算的坑 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -703,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">2.</span> <span class="nav-text">优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OAuth"><span class="nav-number">1.</span> <span class="nav-text">OAuth</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#授权码模式-authorization-code"><span class="nav-number">1.1.</span> <span class="nav-text">授权码模式(authorization code)</span></a></li></ol></li></ol></div>
             
 
           </div>

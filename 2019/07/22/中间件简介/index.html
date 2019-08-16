@@ -81,28 +81,18 @@
 
 
 
-<meta name="description" content="前言最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。 优化当时构建的时间如图所示，平均为40s左右。要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：1$ webpack --profile --json &amp;gt; stats.json  刚开始遇到了一个报错，Output">
+<meta name="description" content="nginx定义Nginx是一个http服务器。是一个使用c语言开发的高性能的http服务器及反向代理服务器。Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。 应用场景 http服务器，做静态服务器 虚拟主机：实现一台服务器虚拟出多个网站 反向代理，负载均衡  同类对比F5，硬件 优点：能够直接通过智能交换机实现,处理能力更强，而且与系统无关，负载">
 <meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsp + react项目webpack构建优化记录">
-<meta property="og:url" content="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/index.html">
+<meta property="og:title" content="中间件简介">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/中间件简介/index.html">
 <meta property="og:site_name" content="SOLACE ZONE">
-<meta property="og:description" content="前言最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。 优化当时构建的时间如图所示，平均为40s左右。要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：1$ webpack --profile --json &amp;gt; stats.json  刚开始遇到了一个报错，Output">
+<meta property="og:description" content="nginx定义Nginx是一个http服务器。是一个使用c语言开发的高性能的http服务器及反向代理服务器。Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。 应用场景 http服务器，做静态服务器 虚拟主机：实现一台服务器虚拟出多个网站 反向代理，负载均衡  同类对比F5，硬件 优点：能够直接通过智能交换机实现,处理能力更强，而且与系统无关，负载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/before.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/multiCompile.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/afterCombine.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/hints.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/beforeSplit.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/afterSplit.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/longModuleBuildChains.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/prefetchPlugin.png">
-<meta property="og:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/prefetchDefaultUsed.png">
-<meta property="og:updated_time" content="2019-01-15T03:24:15.480Z">
+<meta property="og:updated_time" content="2019-07-25T09:16:28.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsp + react项目webpack构建优化记录">
-<meta name="twitter:description" content="前言最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。 优化当时构建的时间如图所示，平均为40s左右。要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：1$ webpack --profile --json &amp;gt; stats.json  刚开始遇到了一个报错，Output">
-<meta name="twitter:image" content="http://yoursite.com/images/article/jsp&react项目webpack构建优化记录/before.png">
+<meta name="twitter:title" content="中间件简介">
+<meta name="twitter:description" content="nginx定义Nginx是一个http服务器。是一个使用c语言开发的高性能的http服务器及反向代理服务器。Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。 应用场景 http服务器，做静态服务器 虚拟主机：实现一台服务器虚拟出多个网站 反向代理，负载均衡  同类对比F5，硬件 优点：能够直接通过智能交换机实现,处理能力更强，而且与系统无关，负载">
 
 
 
@@ -132,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/22/中间件简介/"/>
 
 
 
 
 
-  <title>jsp + react项目webpack构建优化记录 | SOLACE ZONE</title>
+  <title>中间件简介 | SOLACE ZONE</title>
   
 
 
@@ -323,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/22/中间件简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Beijin">
@@ -340,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jsp + react项目webpack构建优化记录</h1>
+          <h1 class="post-title" itemprop="name headline">中间件简介</h1>
         
 
         <div class="post-meta">
@@ -352,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T16:23:23+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-22T17:25:15+08:00">
+                2019-07-22
               </time>
             
 
@@ -375,8 +365,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/构建/" itemprop="url" rel="index">
-                    <span itemprop="name">构建</span>
+                  <a href="/categories/新知识/" itemprop="url" rel="index">
+                    <span itemprop="name">新知识</span>
                   </a>
                 </span>
 
@@ -392,7 +382,7 @@
 
           
           
-             <span id="/2018/03/08/jsp+react项目webpack构建优化记录/" class="leancloud_visitors" data-flag-title="jsp + react项目webpack构建优化记录">
+             <span id="/2019/07/22/中间件简介/" class="leancloud_visitors" data-flag-title="中间件简介">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,23 +413,43 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接手了一个项目，由于历史原因，项目是由jsp和react混合的，其中react部分通过webpack构建，打包生成js文件引入jsp页面。</p>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>当时构建的时间如图所示，平均为40s左右。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/before.png" alt=""><br>要提升打包的速度，需要进行bundle分析，可以通过以下命令获得打包的输出结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --profile --json &gt; stats.json</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>刚开始遇到了一个报错，<strong><em>Output filename not configured</em></strong>，排查之后发现是webpack.config.js文件中的output属性使用了chunkFilename造成的，改回filename的设置即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">  chunkFilename: <span class="string">'[name].bundle.js'</span>, <span class="comment">// 使用这个属性会造成stats.json生成失败，具体原因未知</span></span><br><span class="line">  path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>然后将得到的结果放到webpack的<a href="https://github.com/webpack/analyse" target="_blank" rel="noopener">官方分析工具</a>进行分析。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/multiCompile.png" alt=""><br>当我把项目的stats.json输出文件上传之后，看到了上图，正常来说上传之后会直接显示bundle分析，但是此时显示多个compile选择，可见这份json文件中包含了多次构建，于是我去查看了webpack的config文件，看到了下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getConfg</span>(<span class="params">resourse, env</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> resources = resourse,</span><br><span class="line">        cfgArr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> resources) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.hasOwnProperty.call(resources, key))&#123;</span><br><span class="line">            <span class="keyword">var</span> obj = getBaseCfg(env);</span><br><span class="line">            obj.entry = &#123;&#125;;</span><br><span class="line">            obj.entry[path.basename(key, <span class="string">'.jsx'</span>)] = key;</span><br><span class="line">            obj.output = &#123;&#125;;</span><br><span class="line">            obj.output.path = resources[key];</span><br><span class="line">            obj.output.filename = <span class="string">'[name].js'</span>;</span><br><span class="line">            cfgArr.push(obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cfgArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看到返回的cfgArr是个数组，因此执行了多次webpack构建，降低了性能，可以通过多入口的方式，将这些构建合并成一个，来提高构建速度，修改如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getConfg</span>(<span class="params">resourse, env</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> resources = resourse,</span><br><span class="line">        cfg = getBaseCfg(env);</span><br><span class="line">    cfg.entry = &#123;&#125;;</span><br><span class="line">    cfg.output = &#123;</span><br><span class="line">        path: path.resolve(__dirname, buildDir),</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    resources.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">filePath</span>) </span>&#123;</span><br><span class="line">        cfg.entry[path.basename(filePath, <span class="string">'.jsx'</span>)] = filePath;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cfg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此外，由于这些模块之间存在公共部分，可以通过CommonsChunkPlugin提取出来，来避免打包时的代码冗余。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">        name: <span class="string">"common"</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>以下是优化后的构建时间，缩短了将近一半。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/afterCombine.png" alt=""> </p>
-<p>好，接下来继续进行分析，修改之后，重新生成一下stats.json，这次再上传到官方的分析工具之后，这次直接就展示了输出结果，我们先点击上方导航栏的hints，就能看到工具提供的优化建议。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/hints.png" alt=""><br>如图，看到的是可以提取的公共模块，其中有个<code>address.json</code>文件，体积高达1mb，被两个module所引用，造成两个module体积都较大，可以考虑打包成单独的chunk，动态加载。<br>按照建议，参考<a href="https://doc.webpack-china.org/api/module-methods/#import-" target="_blank" rel="noopener">官方文档</a>使用import方式动态加载。</p>
-<blockquote>
-<p>工具建议中所用的ensure方法已被import取代<br>注意：此时需要修改webpack.config.js文件中的output属性，把filename改成chunkFilename，否则会出现分离出来的chunk文件名是数字的情况。</p>
-</blockquote>
-<p>分离出address文件之后，可以看到原本引用了该文件的applyInfo和basicInfoList体积都减小了很多，不过经测试对构建时间并没有什么影响。而且因为使用到这个文件的两个模块其实也是一加载的时候就需要使用address，并不存在需要时再加载，因此对页面的性能也没什么提高……<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/beforeSplit.png" alt=""><br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/afterSplit.png" alt=""> </p>
-<p>总之，继续来看下面的hints吧。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/longModuleBuildChains.png" alt=""><br>这个hint大意是有些模块的依赖路径太长，建议提前告知webpack。<a href="https://webpack.js.org/plugins/prefetch-plugin/" target="_blank" rel="noopener">Prefetch</a>是webpack的一个插件，但是官方文档的介绍比较简略，看不出这个插件是如何作用提高性能的。我按照文档介绍的方式尝试prefetch了几个模块，但是构建时间并没有减少，也并没有新的chunk输出。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/dom-align/es/index.js'</span>),</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/lodash/_mapCacheClear.js'</span>),</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/lodash/_MapCache.js'</span>),</span><br><span class="line">    <span class="keyword">new</span> webpack.PrefetchPlugin(<span class="string">'./node_modules/async-validator/es/rule/index.js'</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>在网上找到webpack作者sokra的一段解释，完整的issues见<a href="https://github.com/webpack/webpack/issues/1566" target="_blank" rel="noopener">这里</a><br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/prefetchPlugin.png" alt=""><br>大意是过长的chains可能导致webpack为了等待I/O而导致性能受影响，而prefetch可以避免这种情况发生。结合前面加了prefetch之后构建时间并没有减少的情况，我觉得prefetch应该只有在I/O成为性能瓶颈的情况下，才会提升构建性能。<br>此外，在另一个<a href="https://github.com/webpack/webpack.js.org/issues/126" target="_blank" rel="noopener">issuse</a>里，webpack成员TheLarkInn提到prefetch现在在webpack中已经是默认配置了，因此没必要特意做配置了。<br><img src="/images/article/jsp&amp;react项目webpack构建优化记录/prefetchDefaultUsed.png" alt=""> </p>
+        <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Nginx是一个http服务器。是一个使用c语言开发的高性能的http服务器及反向代理服务器。Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>http服务器，做静态服务器</li>
+<li>虚拟主机：实现一台服务器虚拟出多个网站</li>
+<li>反向代理，负载均衡</li>
+</ul>
+<h2 id="同类对比"><a href="#同类对比" class="headerlink" title="同类对比"></a>同类对比</h2><h3 id="F5，硬件"><a href="#F5，硬件" class="headerlink" title="F5，硬件"></a>F5，硬件</h3><ul>
+<li>优点：能够直接通过智能交换机实现,处理能力更强，而且与系统无关，负载性能强，更适用于一大堆设备、大访问量、简单应用。</li>
+<li>缺点：成本高，除设备价格高昂，而且配置冗余，很难想象后面服务器做一个集群，但最关键的负载均衡设备却是单点配置，无法有效掌握服务器及应用状态。<br>硬件负载均衡，一般都不管实际系统与应用的状态，而只是从网络层来判断，所以有时候系统处理能力已经不行了，但网络可能还来得及反应（这种情况非常典型，比如应用服务器后面内存已经占用很多，但还没有彻底不行，如果网络传输量不大就未必在网络层能反映出来）</li>
+</ul>
+<h3 id="Nginx，软负载"><a href="#Nginx，软负载" class="headerlink" title="Nginx，软负载"></a>Nginx，软负载</h3><ul>
+<li>优点：基于系统与应用的负载均衡，能够更好地根据系统与应用的状况来分配负载。这对于复杂应用是很重要的，性价比高，实际上如果几台服务器，用F5之类的硬件产品显得有些浪费，而用软件就要合算得多，因为服务器同时还可以跑应用、做集群等。</li>
+<li>缺点：负载能力受服务器本身性能的影响，性能越好，负载能力越大。</li>
+</ul>
+<h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h2 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>性能：执行耗时久、结果不频繁变动的SQL，适合将结果放入redis缓存</li>
+<li>并发：缓冲作用，避免大量请求直接访问数据库，引起连接异常</li>
+</ul>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul>
+<li>缓存和数据库双写一致性问题</li>
+<li>缓存雪崩问题</li>
+<li>缓存击穿问题</li>
+<li>缓存的并发竞争问题<br>参考<a href="https://zhuanlan.zhihu.com/p/50392209" target="_blank" rel="noopener">为什么我们做分布式使用 Redis ？</a></li>
+</ul>
+<h1 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h1><p>分布式协调系统，<a href="https://www.zhihu.com/question/35139415" target="_blank" rel="noopener">参考</a></p>
+<h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><p>Kafka、ActiveMQ、RabbitMQ、RocketMQ</p>
+<h2 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>解耦：发布订阅模型，使系统与其他系统解耦</li>
+<li>异步</li>
+<li>削峰：请求先存入MQ，系统再定量去MQ中去取，避免大量请求直接是系统崩溃<br><a href="https://www.javazhiyin.com/22897.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h1 id="couchbase"><a href="#couchbase" class="headerlink" title="couchbase"></a>couchbase</h1><p><a href="https://juejin.im/post/5ad53562f265da238b7e7f3c" target="_blank" rel="noopener">参考</a></p>
+<h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><p>简称ES，Elasticsearch是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别的数据。<br>用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的RESTful API来隐藏Lucene的复杂性，从而让全文搜索变得简单。<br><a href="https://my.oschina.net/90888/blog/1619325" target="_blank" rel="noopener">参考</a></p>
+<h1 id="FastDFS"><a href="#FastDFS" class="headerlink" title="FastDFS"></a>FastDFS</h1><ul>
+<li>文件与代码耦合，文件越多越混乱</li>
+<li>静态文件访问会占用资源，影响服务器性能<br>轻量级分布式文件存储，<a href="http://rdc.hundsun.com/portal/article/890.html" target="_blank" rel="noopener">参考1</a>、<a href="https://zhuanlan.zhihu.com/p/32798888" target="_blank" rel="noopener">参考2</a></li>
+</ul>
 
       
     </div>
@@ -484,7 +494,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/" title="jsp + react项目webpack构建优化记录">http://yoursite.com/2018/03/08/jsp+react项目webpack构建优化记录/</a>
+    <a href="http://yoursite.com/2019/07/22/中间件简介/" title="中间件简介">http://yoursite.com/2019/07/22/中间件简介/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -527,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/angular学习笔记/" rel="next" title="angular学习笔记">
-                <i class="fa fa-chevron-left"></i> angular学习笔记
+              <a href="/2019/07/08/javascript迁移到typescript过程记录/" rel="next" title="javascript迁移到typescript过程记录">
+                <i class="fa fa-chevron-left"></i> javascript迁移到typescript过程记录
               </a>
             
           </div>
@@ -537,8 +547,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/17/工作采坑记录：jquery1.12版本top计算的坑/" rel="prev" title="工作采坑记录：jquery1.12版本top计算的坑">
-                工作采坑记录：jquery1.12版本top计算的坑 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/26/分布式设计/" rel="prev" title="'分布式设计'">
+                '分布式设计' <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -703,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">2.</span> <span class="nav-text">优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">1.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同类对比"><span class="nav-number">1.3.</span> <span class="nav-text">同类对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#F5，硬件"><span class="nav-number">1.3.1.</span> <span class="nav-text">F5，硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx，软负载"><span class="nav-number">1.3.2.</span> <span class="nav-text">Nginx，软负载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis"><span class="nav-number">2.</span> <span class="nav-text">redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景-1"><span class="nav-number">2.1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">2.2.</span> <span class="nav-text">常见问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper"><span class="nav-number">3.</span> <span class="nav-text">zookeeper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消息队列"><span class="nav-number">4.</span> <span class="nav-text">消息队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景-2"><span class="nav-number">4.1.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#couchbase"><span class="nav-number">5.</span> <span class="nav-text">couchbase</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">6.</span> <span class="nav-text">Elasticsearch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastDFS"><span class="nav-number">7.</span> <span class="nav-text">FastDFS</span></a></li></ol></div>
             
 
           </div>
