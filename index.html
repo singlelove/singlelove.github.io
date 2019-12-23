@@ -309,6 +309,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/深入理解缓存机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Beijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOLACE ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/17/深入理解缓存机制/" itemprop="url">深入理解缓存机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-17T10:31:22+08:00">
+                2019-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/新知识/" itemprop="url" rel="index">
+                    <span itemprop="name">新知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/17/深入理解缓存机制/" class="leancloud_visitors" data-flag-title="深入理解缓存机制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="memory-cache"><a href="#memory-cache" class="headerlink" title="memory cache"></a>memory cache</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>读取速度最快</li>
+<li>存储容量有限</li>
+<li>关闭tab标签页即失效</li>
+</ul>
+<h3 id="哪些资源会进入memory-cache"><a href="#哪些资源会进入memory-cache" class="headerlink" title="哪些资源会进入memory cache"></a>哪些资源会进入memory cache</h3><ul>
+<li>preloader的资源</li>
+<li>preload的资源</li>
+</ul>
+<h3 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h3><ul>
+<li>url完全相同</li>
+<li>content-type</li>
+<li>CORS中的域名规则等等</li>
+<li>max-age=0；no-cache等头部配置会被忽略</li>
+</ul>
+<h2 id="disk-cache"><a href="#disk-cache" class="headerlink" title="disk cache"></a>disk cache</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>读取速度比memory cache慢，比network快</li>
+<li>是持久存储</li>
+<li>随着容量的增长，浏览器会做自动清理最老的和最可能过时的资源，具体算法不同浏览器存在差异</li>
+</ul>
+<h3 id="memory-cache与disk-cache的比较"><a href="#memory-cache与disk-cache的比较" class="headerlink" title="memory cache与disk cache的比较"></a>memory cache与disk cache的比较</h3><p>浏览器（以下结果只针对chrome浏览器）是如何决定资源应该存入memory还是disk呢？网上并未找到准确的答案。个人也没有试验出规律，同样的资源可能from memory也可能from disk，有一种说法是可能跟当前的内存占用情况有关。</p>
+<p>参考<br><a href="https://juejin.im/post/5c22ee806fb9a049fb43b2c5?utm_source=gold_browser_extension" target="_blank" rel="noopener">一文读懂前端缓存</a></p>
+<h1 id="缓存规则"><a href="#缓存规则" class="headerlink" title="缓存规则"></a>缓存规则</h1><h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>强缓存通过Expires和Cache-Control两个HTTP Header实现，不会向服务器发送请求，直接从缓存中读取资源</p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>缓存过期时间，存在于response header中，返回的是服务器时间，比如Expires: Wed, 21 Oct 2015 07:28:00 GMT<br>如果是无效的日期，比如0，则表示资源已过期，不会存入缓存。<strong>当同时存在Cache-Control时，Expires会被忽略</strong></p>
+<blockquote>
+<p>Expires是http1.0的产物，是通过本地时间与Expires指定的服务器时间比较来判断资源是否过期，因此当本地时间与服务器时间不一致，特别是手动修改了本地时间，均有可能造成缓存失效</p>
+</blockquote>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>Cache-Control:max-age=60表示1分钟之后过期，其他指令参考<a href="https://www.jianshu.com/p/54cc04190252" target="_blank" rel="noopener">深入理解浏览器的缓存机制</a></p>
+<blockquote>
+<p>Cache-Control是HTTP1.1中控制缓存的重要规则，而Expires是HTTP1.0的产物已经过时了，如今保留只是为了向下兼容</p>
+</blockquote>
+<h3 id="no-cache与max-age-0的区别"><a href="#no-cache与max-age-0的区别" class="headerlink" title="no-cache与max-age=0的区别"></a>no-cache与max-age=0的区别</h3><p>分两种情况：<br>1、如果是request中携带Cache-Control:no-cache时，服务器始终会返回最新的资源，效果类似于no-store;携带max-age=0时，服务器会做校验，未过期返回304，过期返回200<br>2、如果是response中携带时，no-cache与max-age=0的行为一致，都是服务器做校验，未过期返回304，过期返回200<br><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.4" target="_blank" rel="noopener">参考官方文档说明</a></p>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>当强缓存失效之后，浏览器会携带缓存标识向服务器发起请求，服务器根据标识决定是否继续使用缓存。</p>
+<h3 id="Last-Modified和If-Modified-Since"><a href="#Last-Modified和If-Modified-Since" class="headerlink" title="Last-Modified和If-Modified-Since"></a>Last-Modified和If-Modified-Since</h3><p>根据最后编辑的时间确定是否继续使用缓存，存在两个弊端：</p>
+<ul>
+<li>本地打开缓存文件，会导致Last-Modified变化，从而导致缓存失效</li>
+<li>Last-Modified最小单位为秒，因此当修改在毫秒内完成，还是会返回更新前的资源</li>
+</ul>
+<h3 id="ETag和If-None-Match"><a href="#ETag和If-None-Match" class="headerlink" title="ETag和If-None-Match"></a>ETag和If-None-Match</h3><p>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)，只要资源有变化，Etag就会重新生成。</p>
+<h3 id="分布式系统注意点"><a href="#分布式系统注意点" class="headerlink" title="分布式系统注意点"></a>分布式系统注意点</h3><ul>
+<li>分布式系统中，应该尽量关闭etag，因为每台服务器生成的etag不一致</li>
+<li>分布式系统中，必须要保持系统时间的一致，否则Last-Modified时间会有差异</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、首先浏览器根据Cache-Control或者Expires判断资源是否命中强缓存(<strong>如果没有设置任何强缓存策略，则浏览器会采用启发式缓存的策略，即以Date减去Last-Modified的10%作为缓存时间</strong>)<br>2、如果命中强缓存则以service worker、memory cache、disk cache的顺序依次寻找缓存，没有缓存则发起请求重新获取资源<br>3、如果没有命中强缓存则再根据Etag/If-None-Match霍Last-Modified/If-Modified-Since判断资源是否过期<br>4、如果未过期，则返回code 304，浏览器按照步骤2中的顺序从缓存中获取资源<br>5、如果资源过期，则返回code 200，并返回新资源</p>
+<h1 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h1><p><a href="https://juejin.im/post/5a6c87c46fb9a01ca560b4d7" target="_blank" rel="noopener">缓存详解</a><br><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html" target="_blank" rel="noopener">官方文档</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/oauth相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -328,7 +525,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/16/oauth相关/" itemprop="url">'oauth相关'</a></h1>
+                <a class="post-title-link" href="/2019/08/16/oauth相关/" itemprop="url">oauth相关</a></h1>
         
 
         <div class="post-meta">
@@ -358,7 +555,7 @@
 
           
           
-             <span id="/2019/08/16/oauth相关/" class="leancloud_visitors" data-flag-title="'oauth相关'">
+             <span id="/2019/08/16/oauth相关/" class="leancloud_visitors" data-flag-title="oauth相关">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -410,7 +607,7 @@
 <p>建议增加secret字段，否则一旦第三方网站被DNS污染，导致攻击者拿到了code，就可以直接通过code换取access_token了，<br>因为client_id是公开的(在步骤1中就可以看到)，参考<a href="https://www.chrisyue.com/security-issue-about-oauth-2-0-you-should-know.html" target="_blank" rel="noopener">关于 OAuth2.0 安全性你应该要知道的一些事</a><br>一文code与secret部分章节。</p>
 </blockquote>
 <p>5)步骤携带参数<br>access_token：表示访问令牌，必选项。<br>token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。<br>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。<br>refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。<br>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</p>
-<p>流程参考<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">阮一峰的理解OAuth 2.0</a><br>安全性问题参考<a href="http://blog.abandonzhang.me/2017/11/12/OAuth-2-0-Authorization-Framework/#%E5%AE%89%E5%85%A8%E6%80%A7%E8%80%83%E8%99%91%EF%BC%88Security-Considerations%EF%BC%89" target="_blank" rel="noopener">The OAuth 2.0 Authorization Framework 入门</a></p>
+<p>流程参考<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">阮一峰的理解OAuth 2.0</a><br>安全性问题参考<a href="http://blog.abandonzhang.me/2017/11/12/OAuth-2-0-Authorization-Framework/#%E5%AE%89%E5%85%A8%E6%80%A7%E8%80%83%E8%99%91%EF%BC%88Security-Considerations%EF%BC%89" target="_blank" rel="noopener">The OAuth 2.0 Authorization Framework 入门</a><br>implicit grant方式的缺陷参考<a href="https://paper.seebug.org/papers/Archive/drops2/OAuth%202.0%E5%AE%89%E5%85%A8%E6%A1%88%E4%BE%8B%E5%9B%9E%E9%A1%BE.html" target="_blank" rel="noopener">OAuth 2.0的安全焦点</a></p>
 
           
         
@@ -478,7 +675,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/26/分布式设计/" itemprop="url">'分布式设计'</a></h1>
+                <a class="post-title-link" href="/2019/07/26/分布式设计/" itemprop="url">分布式设计</a></h1>
         
 
         <div class="post-meta">
@@ -530,7 +727,7 @@
 
           
           
-             <span id="/2019/07/26/分布式设计/" class="leancloud_visitors" data-flag-title="'分布式设计'">
+             <span id="/2019/07/26/分布式设计/" class="leancloud_visitors" data-flag-title="分布式设计">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1893,258 +2090,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/开源接口管理工具RAP2部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang Beijin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SOLACE ZONE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/02/开源接口管理工具RAP2部署/" itemprop="url">开源接口管理工具RAP2部署</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T10:02:40+08:00">
-                2019-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开源工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开源工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/01/02/开源接口管理工具RAP2部署/" class="leancloud_visitors" data-flag-title="开源接口管理工具RAP2部署">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>此文是我在本地服务器部署RAP2过程中的流程及问题记录。</p>
-<ul>
-<li>服务器版本：centos 6.9</li>
-<li>数据库版本：MySQL 5.7</li>
-<li>Node版本：8.9.4</li>
-<li>redis版本：4.0</li>
-</ul>
-<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><p>整个过程分三块：</p>
-<ul>
-<li>MySQL数据库安装</li>
-<li>后端数据API服务器rap2-delos部署</li>
-<li>前端静态资源rap2-dolores部署<blockquote>
-<p>redis已经安装好了，我就没装，请自行搜索相关教程</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="MySQL数据库安装"><a href="#MySQL数据库安装" class="headerlink" title="MySQL数据库安装"></a>MySQL数据库安装</h1><p><a href="http://blog.51cto.com/phpervip/2063092" target="_blank" rel="noopener">参考</a></p>
-<blockquote>
-<p>原文step5、step8指令有误</p>
-</blockquote>
-<ul>
-<li><p>Step1: 检测系统是否自带安装mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step2: 删除系统自带的mysql及其依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y remove mysql-libs.x86_64</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step3: 给CentOS添加rpm源，并且选择对应的源。CeontOS6只能用el6的。<br><a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">官网地址</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">下载源</span><br><span class="line">wget dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm</span><br><span class="line">安装源</span><br><span class="line">yum localinstall mysql-community-release-el6-5.noarch.rpm</span><br><span class="line">查看启用情况</span><br><span class="line">yum repolist all | grep mysql</span><br><span class="line">设置启用mysql57</span><br><span class="line">yum repolist enabled | grep &quot;mysql.-community.&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step4:安装MySQL服务器命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step5:启动MySQL服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step6:查看root 临时密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &apos;temporary password&apos; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step7:修改root密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">出现密码输入框，使用刚才查看的临时密码登录</span><br><span class="line">登陆之后输入以下命令修改密码其中MyNewPass2!为新密码</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;MyNewPass2!&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>密码必须包含字母大小写、数字和特殊字符</p>
-</blockquote>
-<ul>
-<li>Step8:设置远程用户<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user &apos;root&apos;@&apos;%&apos; identified by &apos;MyNewPass2!&apos;;</span><br><span class="line">grant all privileges on *.* to &apos;root&apos;@&apos;%&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>新版本MySql把创建账户和赋予权限分开了，所以必须要两条命令</p>
-</blockquote>
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>Q: navicat for mysql 链接时报错：1251-Client does not support authentication protocol requested by server</p>
-<p>A: 参考<a href="https://my.oschina.net/u/3295928/blog/1811804" target="_blank" rel="noopener">此文</a>，使用如下命令解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;MyNewPass2!&apos;;</span><br></pre></td></tr></table></figure></p>
-<h1 id="后端数据API服务器rap2-delos部署"><a href="#后端数据API服务器rap2-delos部署" class="headerlink" title="后端数据API服务器rap2-delos部署"></a>后端数据API服务器rap2-delos部署</h1><ul>
-<li><p>1、输入以下指令，并用新密码登录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2、创建数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE IF NOT EXISTS RAP2_DELOS_APP DEFAULT CHARSET utf8 COLLATE utf8_general_ci</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3、初始化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4、修改生产环境配置src/config/config.prod.ts<br>包含数据库密码的修改、redis服务器地址、mySql数据库地址的指定，<strong>localhost</strong>都要换成具体ip</p>
-<blockquote>
-<p>由于step6初始化数据库表时默认针对的是开发环境，而我是跑的生产环境，所以顺便做了以下修改：</p>
-<ul>
-<li>package.json中修改create-db的NODE_ENV为production</li>
-<li>config.prod.ts中的database改成RAP2_DELOS_APP</li>
-</ul>
-</blockquote>
-</li>
-<li><p>5、安装 &amp;&amp; TypeScript编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6、初始化数据库表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run create-db</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>7、启动生产服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="前端静态资源rap2-dolores部署"><a href="#前端静态资源rap2-dolores部署" class="headerlink" title="前端静态资源rap2-dolores部署"></a>前端静态资源rap2-dolores部署</h1><ul>
-<li><p>1、初始化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2、修改生产环境配置src/config/config.prod.js<br>配置前面启动的rap2-delos服务器的地址</p>
-</li>
-<li><p>3、编译react生产包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4、用serve命令或nginx服务器路由到编译产出的build文件夹作为静态服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serve -s ./build -p 80</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>我用的是pm2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 serve ./build 8082 --name rap2-dolores</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2199,7 +2144,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
