@@ -1,5 +1,5 @@
 ---
-title: 'vue学习笔记'
+title: vue学习笔记
 date: 2018-07-05 17:20:04
 tags: 学习
 categories: 框架

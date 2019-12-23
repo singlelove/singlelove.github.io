@@ -1,5 +1,5 @@
 ---
-title: '''oauth相关'''
+title: oauth相关
 date: 2019-08-16 10:39:51
 tags:
 ---
@@ -49,3 +49,5 @@ scope：表示权限范围，如果与客户端申请的范围一致，此项可
 
 流程参考[阮一峰的理解OAuth 2.0](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 安全性问题参考[The OAuth 2.0 Authorization Framework 入门](http://blog.abandonzhang.me/2017/11/12/OAuth-2-0-Authorization-Framework/#%E5%AE%89%E5%85%A8%E6%80%A7%E8%80%83%E8%99%91%EF%BC%88Security-Considerations%EF%BC%89)
+implicit grant方式的缺陷参考[OAuth 2.0的安全焦点](https://paper.seebug.org/papers/Archive/drops2/OAuth%202.0%E5%AE%89%E5%85%A8%E6%A1%88%E4%BE%8B%E5%9B%9E%E9%A1%BE.html)
+

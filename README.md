@@ -19,7 +19,7 @@
 2. hexo s
 
 ## new article
-hexo n "title"
+hexo n title
 
 #deploy
 1. hexo g
